@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEditor.Build.Content;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ public class unitController : MonoBehaviour
     public float speed = 1f;
     private Vector3 worldPosition;
     private Vector3 displacement; 
+
+    private bool moving;
 
     private void Start() {
         animator = transform.GetComponent<Animator>();
@@ -29,14 +32,26 @@ public class unitController : MonoBehaviour
 
     // transform.position += displacement * speed * Time.deltaTime;
 
-    transform.position = Vector3.MoveTowards(transform.position,worldPosition,speed+Time.deltaTime);  //Smooth movement
+    transform.position = Vector3.MoveTowards(transform.position,worldPosition,speed+Time.deltaTime);  //Smooth movement 
 
-    if (transform.position != worldPosition) {
+    moving = transform.position !=worldPosition;
+    
+
+    if (moving) {
         animator.SetBool("isMoving",true);
+        animator.SetBool("isShooting",false);
     }
 
     else{
         animator.SetBool("isMoving",false);
+    }
+
+    if(Input.GetMouseButton(1) && !moving ){
+        animator.SetBool("isShooting",true);
+    }
+
+    else{
+        animator.SetBool("isShooting", false);
     }
         
     }
