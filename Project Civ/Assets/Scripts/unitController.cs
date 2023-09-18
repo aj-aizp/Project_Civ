@@ -10,13 +10,22 @@ public class unitController : MonoBehaviour
     private Animator animator;  
     public float speed = 1f;
     private Vector3 worldPosition;
-    private Vector3 displacement; 
+
+   // private bool collision;
 
     private bool moving;
 
     private void Start() {
         animator = transform.GetComponent<Animator>();
     }
+
+
+// private void OnCollisionEnter2D(Collision2D col) {
+    
+// collision = true;
+       
+// }
+
 
 //Move to Mouse Click Position (World Space)
  void Update() {
@@ -27,12 +36,13 @@ public class unitController : MonoBehaviour
     worldPosition.z = 0f;
     }
 
-    // displacement = worldPosition - transform.position;  //Distance between MouseClick and Unit
-    // displacement = displacement.normalized; 
-
-    // transform.position += displacement * speed * Time.deltaTime;
-
+  //  if (collision == false) {
     transform.position = Vector3.MoveTowards(transform.position,worldPosition,speed+Time.deltaTime);  //Smooth movement 
+    //}
+
+    // else if (collision ==true) {
+    // transform.position = Vector3.MoveTowards(transform.position,-worldPosition/10,speed+Time.deltaTime);  //Smooth movement 
+    // }
 
     moving = transform.position !=worldPosition;
     
@@ -53,7 +63,13 @@ public class unitController : MonoBehaviour
     else{
         animator.SetBool("isShooting", false);
     }
+
+   // collision = false;
         
     }
+
+
+
+
 
 }
