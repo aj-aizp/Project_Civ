@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eeb2d682bd1f4b4fbbbccee7c9a7efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 50
+  radius: 3
 --- !u!114 &4536731815382129606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,7 +293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a040c54146fb8740abd3cc6e40d4924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5548875535945066863, guid: 75f0c194ae9fa7a4eb3054c74e14ef86, type: 3}
-  gunPoint: {fileID: 0}
-  fireForce: 20
-  firerate: 0
+  bulletPrefab: {fileID: 3952490067194385601, guid: c2ac92c9f20c90542b1d318eb0179f57, type: 3}
+  fireForce: 4
+  firerate: 2
