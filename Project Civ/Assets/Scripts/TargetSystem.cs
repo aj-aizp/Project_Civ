@@ -7,7 +7,6 @@ public class TargetSystem : MonoBehaviour
 
 
 {
-
     private WeaponController weapon;
 
     private Vector3 enemyPos; 
@@ -17,8 +16,6 @@ public class TargetSystem : MonoBehaviour
     private bool collision; 
 
     private void OnTriggerEnter2D(Collider2D col) {
-
-    
 
         if (col.TryGetComponent<EnemyAI>(out EnemyAI enemy)) {
             collision = true;
