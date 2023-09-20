@@ -741,6 +741,10 @@ PrefabInstance:
       propertyPath: fireForce
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4536731815382129606, guid: dafa875d7e01ebc4dafc604b10c4c7ae, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 3952490067194385601, guid: c2ac92c9f20c90542b1d318eb0179f57, type: 3}
     m_RemovedComponents:
     - {fileID: 805559792534706197, guid: dafa875d7e01ebc4dafc604b10c4c7ae, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dafa875d7e01ebc4dafc604b10c4c7ae, type: 3}
