@@ -11,24 +11,14 @@ public class TargetSystem : MonoBehaviour
 
     private Vector3 enemyPos; 
 
-    private Transform enemyIn;
+ 
+    public float radius = 50f; 
 
-    private bool collision; 
 
-    private void OnTriggerEnter2D(Collider2D col) {
 
-        if (col.TryGetComponent<EnemyAI>(out EnemyAI enemy)) {
-            collision = true;
-            enemyIn = enemy.GetComponent<Transform>();
-            enemyPos = enemy.transform.position;
-        }
-    }
 
-    // private void OnTriggerExit2D(Collider2D other) {
 
-    //  collision = false; 
-  
-    //  }
+
 
 
     private void Awake() {
@@ -38,10 +28,18 @@ public class TargetSystem : MonoBehaviour
 
     void Update(){
 
-        if (collision) {
-          enemyPos = enemyIn.position;
-          StartCoroutine(weapon.Fire(enemyPos));
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position,radius);
+
+        foreach (Collider2D hitCollider in hitColliders){
+
+            Debug.Log(hitCollider.TryGetComponent<EnemyAI>(out EnemyAI enemy1));
+
+            if (hitCollider.TryGetComponent<EnemyAI>(out EnemyAI enemy)){
+               enemyPos = enemy.transform.position;
+               StartCoroutine(weapon.Fire(enemyPos));
+            }
         }
+
 
     }
    
