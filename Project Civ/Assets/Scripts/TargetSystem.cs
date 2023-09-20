@@ -15,12 +15,6 @@ public class TargetSystem : MonoBehaviour
     public float radius = 50f; 
 
 
-
-
-
-
-
-
     private void Awake() {
         weapon = GetComponent<WeaponController>();
 
@@ -31,8 +25,6 @@ public class TargetSystem : MonoBehaviour
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position,radius);
 
         foreach (Collider2D hitCollider in hitColliders){
-
-            Debug.Log(hitCollider.TryGetComponent<EnemyAI>(out EnemyAI enemy1));
 
             if (hitCollider.TryGetComponent<EnemyAI>(out EnemyAI enemy)){
                enemyPos = enemy.transform.position;

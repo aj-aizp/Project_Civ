@@ -16,6 +16,7 @@ public class WeaponController : MonoBehaviour
   public IEnumerator Fire(Vector3 targetPos){
 
     aimVector = targetPos - gunPoint.position;
+    //Quaternion rotation = Quaternion.LookRotation(aimVector, Vector3.up);
 
     if (Time.time > nextfire) {
         nextfire = Time.time + firerate; 
