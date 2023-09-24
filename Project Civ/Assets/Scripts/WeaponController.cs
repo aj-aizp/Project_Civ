@@ -61,7 +61,8 @@ public class WeaponController : MonoBehaviour
 
     if (Time.time > nextfire && animator.GetBool("isMoving") !=true) {
           nextfire = Time.time + firerate; 
-          animator.SetBool("isShooting",true);
+
+          animator.Play("Union_Shoot", 0,1f);
           GameObject bullet = Instantiate(bulletPrefab, gunPoint.position,rotation); 
 
           bullet.GetComponent<Rigidbody2D>().AddForce(aimVector * fireForce, ForceMode2D.Impulse);

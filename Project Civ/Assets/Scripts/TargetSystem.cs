@@ -30,6 +30,8 @@ public class TargetSystem : MonoBehaviour
                enemyPos = enemy.transform.position;
                StartCoroutine(weapon.Fire(enemyPos));
             }
+
+           
         }
 
 

@@ -739,7 +739,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4536731815382129606, guid: dafa875d7e01ebc4dafc604b10c4c7ae, type: 3}
       propertyPath: firerate
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4536731815382129606, guid: dafa875d7e01ebc4dafc604b10c4c7ae, type: 3}
       propertyPath: gunPoint
