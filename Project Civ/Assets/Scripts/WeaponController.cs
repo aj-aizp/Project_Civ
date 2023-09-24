@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ public class WeaponController : MonoBehaviour
   public float fireForce = 20f; 
   public float firerate; 
   private float nextfire;
+
+  private float randomNum; 
 
   private UnityEngine.Vector3 aimVector;
 
@@ -32,12 +35,20 @@ public class WeaponController : MonoBehaviour
   public IEnumerator Fire(UnityEngine.Vector3 targetPos){
 
    aimVector = targetPos - gunPoint.position;
+  
 
-   float rotationZ = Mathf.Atan2(aimVector.y, aimVector.x) *Mathf.Rad2Deg;
+   float rotationZ1 = Mathf.Atan2(aimVector.y, aimVector.x) * Mathf.Rad2Deg;
+
+   //add variation to bullet trajectory
+   randomNum = UnityEngine.Random.Range(-.7f,.7f); 
+   aimVector.x = aimVector.x + randomNum;
+   aimVector.y = aimVector.y + randomNum;
+
+   float rotationZ2 = Mathf.Atan2(aimVector.y, aimVector.x) * Mathf.Rad2Deg;
    aimVector = aimVector.normalized;
 
    //get absolute value of rotation. If greater than 90, flip on x axis. 
-   if(Math.Abs(rotationZ) > 90f) {
+   if(Math.Abs(rotationZ1) > 90f) {
     sprite.flipX = true;
    }
    else{
@@ -45,13 +56,14 @@ public class WeaponController : MonoBehaviour
    }
 
 
-  UnityEngine.Quaternion rotation = UnityEngine.Quaternion.Euler(0.0f,0.0f, rotationZ);
+  UnityEngine.Quaternion rotation = UnityEngine.Quaternion.Euler(0.0f,0.0f, rotationZ2);
 
 
     if (Time.time > nextfire && animator.GetBool("isMoving") !=true) {
           nextfire = Time.time + firerate; 
           animator.SetBool("isShooting",true);
           GameObject bullet = Instantiate(bulletPrefab, gunPoint.position,rotation); 
+
           bullet.GetComponent<Rigidbody2D>().AddForce(aimVector * fireForce, ForceMode2D.Impulse);
           Destroy(bullet, 1.5f);             //Destroys bullet
 
