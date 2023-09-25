@@ -10,6 +10,8 @@ public class WeaponController : MonoBehaviour
 {
 
 [SerializeField] GameObject bulletPrefab;
+[SerializeField] AudioClip gunShot; 
+  private AudioSource soundSource;
   private Transform gunPoint;
   private SpriteRenderer sprite; 
 
@@ -29,6 +31,8 @@ public class WeaponController : MonoBehaviour
     sprite = transform.GetComponent<SpriteRenderer>();
 
     animator = transform.GetComponent<Animator>();
+
+    soundSource = transform.GetComponent<AudioSource>();
 
   }
 
@@ -63,6 +67,7 @@ public class WeaponController : MonoBehaviour
           nextfire = Time.time + firerate; 
 
           animator.Play("Union_Shoot", 0,1f);
+          soundSource.PlayOneShot(gunShot);
           GameObject bullet = Instantiate(bulletPrefab, gunPoint.position,rotation); 
 
           bullet.GetComponent<Rigidbody2D>().AddForce(aimVector * fireForce, ForceMode2D.Impulse);

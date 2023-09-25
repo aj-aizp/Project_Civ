@@ -137,7 +137,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.764
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -181,7 +181,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -294,5 +294,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3952490067194385601, guid: c2ac92c9f20c90542b1d318eb0179f57, type: 3}
+  gunShot: {fileID: 8300000, guid: a01affe223850754da2d706465decf73, type: 3}
   fireForce: 4
   firerate: 2

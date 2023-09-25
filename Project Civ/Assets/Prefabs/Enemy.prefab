@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 1895386235551147723}
   - component: {fileID: 1895386235551147720}
   - component: {fileID: 1760032980299806743}
+  - component: {fileID: 1081678819359908247}
+  - component: {fileID: 8345237885824885630}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -122,10 +124,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.757
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -282,3 +284,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e68edddb279cfd449fbd15c8394bd8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1081678819359908247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895386235551147712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a040c54146fb8740abd3cc6e40d4924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 3952490067194385601, guid: c2ac92c9f20c90542b1d318eb0179f57, type: 3}
+  gunShot: {fileID: 8300000, guid: a01affe223850754da2d706465decf73, type: 3}
+  fireForce: 4
+  firerate: 2
+--- !u!114 &8345237885824885630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895386235551147712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eeb2d682bd1f4b4fbbbccee7c9a7efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 50
