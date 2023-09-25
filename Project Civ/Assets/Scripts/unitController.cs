@@ -4,7 +4,7 @@ using System.Data.Common;
 using UnityEditor.Build.Content;
 using UnityEngine;
 
-public class unitController : MonoBehaviour
+public class UnitController : MonoBehaviour
 {
   
     private Animator animator;  
@@ -41,16 +41,6 @@ public class unitController : MonoBehaviour
     else{
         animator.SetBool("isMoving",false);
     }
-
-    // if(Input.GetMouseButton(1) && !moving ){
-    //     animator.SetBool("isShooting",true);
-    // }
-
-    // else{
-    //     animator.SetBool("isShooting", false);
-    // }
-
-   // collision = false;
         
     }
 

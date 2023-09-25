@@ -64,7 +64,11 @@ public class WeaponController : MonoBehaviour
 
 
     if (Time.time > nextfire && animator.GetBool("isMoving") !=true) {
-          nextfire = Time.time + firerate; 
+
+          float randomNum2 = UnityEngine.Random.Range(0.0f,1f);
+          nextfire = Time.time + firerate + randomNum2; 
+
+          Debug.Log(nextfire);
 
           animator.Play("Union_Shoot", 0,1f);
           soundSource.PlayOneShot(gunShot);

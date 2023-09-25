@@ -18,10 +18,8 @@ public int numEnemies = 1;
 
 void Start() {
 
-    UnityEngine.Vector3 spawnLoc = spawn.position;
-
     while(numEnemies>0) {
-        GameObject newEnemy = Instantiate(enemyPrefab,spawnLoc,quaternion.identity);
+        GameObject newEnemy = Instantiate(enemyPrefab,spawn.position,quaternion.identity);
         newEnemy.GetComponent<EnemyAI>().setEnemyID(numEnemies);
         enemiesList.Add(newEnemy);
 
