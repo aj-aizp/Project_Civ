@@ -26,8 +26,6 @@ void Start() {
         numEnemies--;
     }
 
-    Debug.Log(enemiesList[0].GetComponent<EnemyAI>().getEnemyID());
-    
 }
 
     // Update is called once per frame

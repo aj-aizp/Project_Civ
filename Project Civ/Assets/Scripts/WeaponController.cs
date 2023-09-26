@@ -68,8 +68,6 @@ public class WeaponController : MonoBehaviour
           float randomNum2 = UnityEngine.Random.Range(0.0f,1f);
           nextfire = Time.time + firerate + randomNum2; 
 
-          Debug.Log(nextfire);
-
           animator.Play("Union_Shoot", 0,1f);
           soundSource.PlayOneShot(gunShot);
           GameObject bullet = Instantiate(bulletPrefab, gunPoint.position,rotation); 
@@ -79,9 +77,6 @@ public class WeaponController : MonoBehaviour
 
           yield return new WaitForSeconds(.1f);
     }
-    // else{
-    //   animator.SetBool("isShooting",false); 
-    // }
   
   }
 

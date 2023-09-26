@@ -23,12 +23,7 @@ public class EnemyTargetSystem : MonoBehaviour
 
         foreach (Collider2D hitCollider in hitColliders){
 
-            Debug.Log(hitColliders);
-
             if (hitCollider.TryGetComponent<TargetSystem>(out TargetSystem enemy)){
-
-                Debug.Log("Enemy found");
-
             
                enemyPos = enemy.transform.position;
                StartCoroutine(weapon.Fire(enemyPos));

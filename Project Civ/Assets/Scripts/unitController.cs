@@ -15,6 +15,7 @@ public class UnitController : MonoBehaviour
 
     private void Start() {
         animator = transform.GetComponent<Animator>();
+        
     }
 
 
