@@ -704,7 +704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 1992000000}
   soldierPrefab: {fileID: 507558035052942913, guid: 8c809aeda24de2647871224bca8a93ef, type: 3}
-  numSoldiers: 3
+  numSoldiers: 20
 --- !u!1 &1723850437
 GameObject:
   m_ObjectHideFlags: 0
