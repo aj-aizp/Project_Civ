@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 805559792534706194, guid: dafa875d7e01ebc4dafc604b10c4c7ae, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 805559792534706195, guid: dafa875d7e01ebc4dafc604b10c4c7ae, type: 3}
       propertyPath: m_RootOrder
@@ -220,7 +220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 805559792534706199, guid: dafa875d7e01ebc4dafc604b10c4c7ae, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 805559792534706204, guid: dafa875d7e01ebc4dafc604b10c4c7ae, type: 3}
       propertyPath: m_FlipX

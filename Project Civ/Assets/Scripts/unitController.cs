@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Transactions;
 using UnityEditor.Build.Content;
 using UnityEngine;
 
@@ -8,9 +9,8 @@ public class UnitController : MonoBehaviour
 {
   
     private Animator animator;  
+    private Vector3 movePosition;
     public float speed = 1f;
-    private Vector3 worldPosition;
-
     private bool moving;
 
     private void Start() {
@@ -18,20 +18,22 @@ public class UnitController : MonoBehaviour
         
     }
 
+    public void setMovePosition (Vector3 movePosition) {
+        this.movePosition = movePosition; 
+    }
+
+    private void Awake() {
+        movePosition = transform.position;
+    }
+
 
 //Move to Mouse Click Position (World Space)
  void Update() {
 
-    if (Input.GetMouseButtonDown(0)){
-
-    worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    worldPosition.z = 0f;
-    }
-
-    transform.position = Vector3.MoveTowards(transform.position,worldPosition,speed+Time.deltaTime);  //Smooth movement 
+    transform.position = Vector3.MoveTowards(transform.position,movePosition,speed+Time.deltaTime);  //Smooth movement 
     
 
-    moving = transform.position !=worldPosition;
+    moving = transform.position != movePosition;
     
 
     if (moving) {

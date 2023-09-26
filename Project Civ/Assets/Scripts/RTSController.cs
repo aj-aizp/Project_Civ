@@ -66,9 +66,18 @@ public class RTSController : MonoBehaviour
         }
        }
 
-       Debug.Log(selectedUnits.Count);
+
+    }
 
 
+
+    if (Input.GetMouseButtonDown(1)){
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0; 
+
+        foreach(UnionSol unionsoldier in selectedUnits) {
+            unionsoldier.MoveOrder(mousePos);
+        }
     }
  }
 }
