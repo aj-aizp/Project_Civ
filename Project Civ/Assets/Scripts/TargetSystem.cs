@@ -27,8 +27,12 @@ public class TargetSystem : MonoBehaviour
         foreach (Collider2D hitCollider in hitColliders){
 
             if (hitCollider.TryGetComponent<EnemyAI>(out EnemyAI enemy)){
+
+                if(enemy.getDeadState()==false) {
                enemyPos = enemy.transform.position;
-               StartCoroutine(weapon.Fire(enemyPos));
+               StartCoroutine(weapon.Fire(enemyPos));}
+
+
             }
 
            

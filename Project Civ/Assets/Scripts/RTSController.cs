@@ -81,15 +81,30 @@ public class RTSController : MonoBehaviour
 
         foreach(UnionSol unionsoldier in selectedUnits) {
 
-            
             if(unionsoldier.getDeathState()!=true){
             unionsoldier.MoveOrder(movePositionsList[movePositionIndex]);
             movePositionIndex = (movePositionIndex +1) % selectedUnits.Count;
             }
+
+            else{
+                unionsoldier.SetSelectedVisible(false);
+            }
+            }
+
+        
+        }
+
+        for (int i = selectedUnits.Count -1; i>=0;i--){
+            UnionSol union1 = selectedUnits[i];
+            if(union1.getDeathState()==true){
+            union1.SetSelectedVisible(false);
+            selectedUnits.Remove(union1);
         }
     }
- }
 
+
+
+    }
 
  private List<Vector3> GetPositionList (Vector3 mousePos, float distance, int unitCount, int modNumber) {
 
