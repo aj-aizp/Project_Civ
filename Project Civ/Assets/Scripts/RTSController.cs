@@ -60,7 +60,7 @@ public class RTSController : MonoBehaviour
        foreach(Collider2D collider2d in collider2DArray ){
         UnionSol unionSoldier = collider2d.GetComponent<UnionSol>();
 
-        if(unionSoldier!=null) {
+        if(unionSoldier!=null && unionSoldier.getDeathState()!=true) {
             unionSoldier.SetSelectedVisible(true);
             selectedUnits.Add(unionSoldier);
         }
@@ -80,8 +80,12 @@ public class RTSController : MonoBehaviour
         int movePositionIndex = 0;
 
         foreach(UnionSol unionsoldier in selectedUnits) {
+
+            
+            if(unionsoldier.getDeathState()!=true){
             unionsoldier.MoveOrder(movePositionsList[movePositionIndex]);
             movePositionIndex = (movePositionIndex +1) % selectedUnits.Count;
+            }
         }
     }
  }

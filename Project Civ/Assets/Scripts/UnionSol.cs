@@ -7,10 +7,12 @@ public class UnionSol : MonoBehaviour
    private GameObject selectedSprite;
    private UnitController movePosition;
    private Animator unionAnim; 
+   private bool dead;
    private int health; 
 
    private void Awake() {
     health = 100;
+    dead = false; 
     movePosition = GetComponent<UnitController>();
     unionAnim = GetComponent<Animator>();
     selectedSprite = transform.Find("SelectedSprite").gameObject;
@@ -25,7 +27,11 @@ public class UnionSol : MonoBehaviour
     movePosition.setMovePosition(position); 
    }
 
+   public bool getDeathState(){
+      return dead;
+   }
    public void Death(){
+        dead = true;
         unionAnim.enabled = false; 
         enabled = false;
         transform.rotation = Quaternion.Euler(0,0,90);
