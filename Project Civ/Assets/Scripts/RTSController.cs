@@ -75,7 +75,7 @@ public class RTSController : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0; 
 
-        List<Vector3> movePositionsList = GetPositionList(mousePos, 0.5f ,selectedUnits.Count, 5);
+        List<Vector3> movePositionsList = GetPositionList(mousePos, 0.5f ,selectedUnits.Count, 10);
 
         int movePositionIndex = 0;
 
@@ -92,23 +92,16 @@ public class RTSController : MonoBehaviour
     List<Vector3> movePositionList = new List<Vector3>();
     int Yoffset = 0;
     int Xoffset= 0;
-
+    
     for(int i =0; i <unitCount; i ++) {
         Xoffset = i%modNumber;
         
         if (i!= 0 && i%modNumber==0) {
          Yoffset += 1; 
         }
-
         Vector3 movePos = mousePos + new Vector3(0 + distance * Xoffset ,0 - distance * Yoffset);
         movePositionList.Add(movePos);
     }
-
-    foreach(Vector3 vector in movePositionList){
-        Debug.Log(vector);
-    }
-
-
     return movePositionList;
  }
 }
