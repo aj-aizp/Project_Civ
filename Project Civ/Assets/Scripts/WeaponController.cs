@@ -72,6 +72,14 @@ public class WeaponController : MonoBehaviour
           soundSource.PlayOneShot(gunShot);
           GameObject bullet = Instantiate(bulletPrefab, gunPoint.position,rotation); 
 
+          if(bullet.TryGetComponent<Bullet>(out Bullet unionBullet )) {
+          unionBullet.setTravelDirection(aimVector); }
+          else{
+            bullet.GetComponent<EnemyBullet>().setTravelDirection(aimVector);
+          }
+
+          
+
           bullet.GetComponent<Rigidbody2D>().AddForce(aimVector * fireForce, ForceMode2D.Impulse);
           Destroy(bullet, 1.5f);             //Destroys bullet
 

@@ -6,6 +6,13 @@ public class EnemyBullet : MonoBehaviour
 {
    public int bulletDamage = 10; 
    private UnionSol union; 
+     private Vector3 Traveldirection;
+
+
+
+   public void setTravelDirection(Vector3 TravelDirection){
+    this.Traveldirection = TravelDirection;
+   }
 
    private void OnCollisionEnter2D(Collision2D col) {
 
@@ -13,6 +20,7 @@ public class EnemyBullet : MonoBehaviour
 
     if(union!=null){
         union.Damage(bulletDamage); 
+        union.setDamageVector(Traveldirection);
     }
     Destroy(gameObject);
 
