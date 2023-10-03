@@ -9,12 +9,12 @@ public class Explosion : MonoBehaviour
     private Animator animator; 
     private void Awake() {
         animator = GetComponent<Animator>() ;
+        animator.Play("Explosion");
+        Destroy(gameObject,4f);
         
     }
 
     private void Update() {
-        animator.Play("Explosion");
-        Destroy(gameObject,8f);
     }
 
   
