@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
@@ -7,6 +8,10 @@ public class Shell : MonoBehaviour
 {
 
   [SerializeField] AudioClip explosion; 
+
+   private Animator animator; 
+
+   private SpriteRenderer sprite; 
    public int bulletDamage = 100; 
    private EnemyAI enemy; 
    private Vector3 Traveldirection; 
@@ -17,8 +22,10 @@ public class Shell : MonoBehaviour
 
 
    private void Awake() {
+    sprite = GetComponent<SpriteRenderer>();
     sound = GetComponent<AudioSource>();
-    sound.pitch = 2f;
+    animator = GetComponent<Animator>();
+    sound.pitch = 1.5f;
    }
 
    public void setTravelDirection(Vector3 TravelDirection){
@@ -26,7 +33,9 @@ public class Shell : MonoBehaviour
    }
 
    private void OnCollisionEnter2D(Collision2D col) {
-
+    
+    //sprite.enabled = false; 
+    animator.Play("Explosion");
     sound.PlayOneShot(explosion); 
 
     if(splashRange >0) {
@@ -34,7 +43,6 @@ public class Shell : MonoBehaviour
        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position,splashRange);
         foreach(Collider2D hitCollider in hitColliders) {
 
-           // Vector3 forceVector = transform.position -(Vector3) hitCollider.ClosestPoint(transform.position); 
             Vector3 forceVector = (Vector3) hitCollider.ClosestPoint(transform.position)-transform.position; 
             enemy = hitCollider.GetComponent<EnemyAI>();
             if (enemy!= null){
@@ -44,14 +52,12 @@ public class Shell : MonoBehaviour
         }
     }
 
-    Destroy(gameObject,5f);
-    // enemy = col.gameObject.GetComponent<EnemyAI>();
-
-    // if(enemy!=null){
-    //     enemy.damage(bulletDamage); 
-    //     enemy.setDamageVector(Traveldirection);
+    // while(animator.GetCurrentAnimatorStateInfo(0).IsName("Explosion")){
+    //     Debug.Log("Hello");
+    //   //  sprite.enabled =false; 
     // }
-    // Destroy(gameObject);
+
+    Destroy(gameObject,8f);
 
    }
 }

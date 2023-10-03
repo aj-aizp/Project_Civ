@@ -78,7 +78,7 @@ public class ArtyWeapon : MonoBehaviour
           
 
           shell.GetComponent<Rigidbody2D>().AddForce(aimVector * shotForce, ForceMode2D.Impulse);
-          Destroy(shell, 5f);             //Destroys bullet
+          Destroy(shell, 10f);             //Destroys shell
 
           yield return new WaitForSeconds(.1f);
     }
