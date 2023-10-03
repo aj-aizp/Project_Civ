@@ -8,8 +8,7 @@ public class Shell : MonoBehaviour
 {
 
   [SerializeField] AudioClip explosion; 
-
-   private Animator animator; 
+  [SerializeField] GameObject explosionPrefab; 
 
    private SpriteRenderer sprite; 
    public int bulletDamage = 100; 
@@ -18,13 +17,14 @@ public class Shell : MonoBehaviour
    public float splashRange = 1f; 
 
    private AudioSource sound; 
+   private Transform warHead; 
 
 
 
    private void Awake() {
     sprite = GetComponent<SpriteRenderer>();
     sound = GetComponent<AudioSource>();
-    animator = GetComponent<Animator>();
+    warHead = transform.GetComponentInChildren<Transform>();
     sound.pitch = 1.5f;
    }
 
@@ -33,9 +33,11 @@ public class Shell : MonoBehaviour
    }
 
    private void OnCollisionEnter2D(Collision2D col) {
-    
-    //sprite.enabled = false; 
-    animator.Play("Explosion");
+
+
+
+    GameObject hitExplode = Instantiate(explosionPrefab,warHead.position,Quaternion.identity);
+    sprite.enabled = false; 
     sound.PlayOneShot(explosion); 
 
     if(splashRange >0) {
@@ -52,11 +54,7 @@ public class Shell : MonoBehaviour
         }
     }
 
-    // while(animator.GetCurrentAnimatorStateInfo(0).IsName("Explosion")){
-    //     Debug.Log("Hello");
-    //   //  sprite.enabled =false; 
-    // }
-
+    Destroy(hitExplode,8f);
     Destroy(gameObject,8f);
 
    }
