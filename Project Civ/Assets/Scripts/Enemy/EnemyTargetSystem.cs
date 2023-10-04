@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyTargetSystem : MonoBehaviour
 {
     private WeaponController weapon;
+    private EnemyAI enemyAI; 
 
     private Vector3 enemyPos; 
 
@@ -14,6 +15,7 @@ public class EnemyTargetSystem : MonoBehaviour
 
     private void Awake() {
         weapon = GetComponent<WeaponController>();
+        enemyAI = GetComponent<EnemyAI>();
 
     }
 
@@ -24,14 +26,12 @@ public class EnemyTargetSystem : MonoBehaviour
         foreach (Collider2D hitCollider in hitColliders){
 
             if (hitCollider.TryGetComponent<TargetSystem>(out TargetSystem enemy)){
+
+                enemyAI.setIsFiring(true);
             
                enemyPos = enemy.transform.position;
                StartCoroutine(weapon.Fire(enemyPos));
             }
-
-           
         }
-
-
     }
 }

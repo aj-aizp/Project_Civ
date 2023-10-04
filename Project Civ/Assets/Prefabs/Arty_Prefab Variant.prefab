@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4986429542380763484, guid: 440241aa72d481a47aadef3334d7211c, type: 3}
       propertyPath: m_Name
-      value: Arty_Prefab
+      value: Arty_Prefab Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 440241aa72d481a47aadef3334d7211c, type: 3}
@@ -122,7 +122,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
