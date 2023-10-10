@@ -30,23 +30,22 @@ public class ArtyTarget : MonoBehaviour
 
             if (hitCollider.TryGetComponent<EnemyAI>(out EnemyAI enemy)){
 
-                enemyPosList.Add(enemy.transform.position); 
-
-            //     if(enemy.getDeadState()==false) {
-            //    enemyPos = enemy.transform.position;
-            //    StartCoroutine(weapon.Fire(enemyPos));}
+                if(enemy.getDeadState() == false) {  
+                    enemyPosList.Add(enemy.transform.position); 
+                }
             }
         }
 
-        if(enemyPosList.Count > 0) {
-
+        if(enemyPosList.Count >= 4) {
            targetPos = midPoint(enemyPosList); 
            StartCoroutine(weapon.Fire(targetPos)); 
-
         }
 
+        else if (enemyPosList.Count != 0) {
+            StartCoroutine(weapon.Fire(enemyPosList[0]));
+        }
 
-
+        enemyPosList.Clear();
 
     }
 

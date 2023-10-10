@@ -5,14 +5,24 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    private int enemyID;
-    public int enemyHealth; 
-    private float speed; 
 
+    [SerializeField] private Material flashMaterial; 
+    private float flashDuration; 
+
+    private Material originMaterial; 
+    private Coroutine flashRoutine; 
+
+    private SpriteRenderer sprite; 
     private Animator enemyAnim; 
     private EnemyTargetSystem weaponTarget;
     private Rigidbody2D rb; 
     private GameObject target; 
+
+    private Vector3 DamageVector; 
+
+     private int enemyID;
+    public int enemyHealth; 
+    private float speed; 
 
     private int deadLayer;
 
@@ -20,7 +30,6 @@ public class EnemyAI : MonoBehaviour
 
     private bool dead;
 
-    private Vector3 DamageVector; 
 
     private void setSpeed(float speed){
         float speedOffset = UnityEngine.Random.Range(0.000f,0.008f);
@@ -65,15 +74,40 @@ public class EnemyAI : MonoBehaviour
     }
 
     public void damage (int damage) {
+        Debug.Log("Damage Taken" + damage); 
+       // Flash(); 
         this.enemyHealth -=damage;
+    }
+
+    private void Flash() {
+        if(flashRoutine!=null) {
+            StopCoroutine(flashRoutine);
+        }
+        else {
+            flashRoutine = StartCoroutine(FlashRoutine()); 
+        }
+    }
+
+    public IEnumerator FlashRoutine() {
+        sprite.material = flashMaterial ;
+
+        yield return new WaitForSeconds (flashDuration); 
+
+        sprite.material = originMaterial; 
+
+        flashRoutine = null;   //signals that the coroutine is done 
+
     }
 
 
     private void Awake() {
         setSpeed(0.003f);
         enemyHealth = 100; 
+       // flashDuration = 0.5f;
         dead = false;
         isFiring = false; 
+        sprite = GetComponent<SpriteRenderer>();
+        originMaterial = sprite.material; 
         enemyAnim = GetComponent<Animator>();
         weaponTarget = GetComponent<EnemyTargetSystem>();
         rb = GetComponent<Rigidbody2D>();
@@ -105,6 +139,10 @@ public class EnemyAI : MonoBehaviour
 
     yield return null;
    }
+
+
+
+
 
     private void Update() {
         if(enemyHealth <=0){

@@ -19,6 +19,14 @@ PrefabInstance:
       propertyPath: enemyHealth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1760032980299806743, guid: 01a63e36641d8f94e9df2a1bb5de9fce, type: 3}
+      propertyPath: flashDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760032980299806743, guid: 01a63e36641d8f94e9df2a1bb5de9fce, type: 3}
+      propertyPath: flashMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 8465222b71ffcba4ab87c8082502c097, type: 2}
     - target: {fileID: 1895386235551147712, guid: 01a63e36641d8f94e9df2a1bb5de9fce, type: 3}
       propertyPath: m_Name
       value: Enemy Variant
