@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using System.Numerics;
 using UnityEngine;
 
 public class Shell : MonoBehaviour
@@ -18,7 +19,8 @@ public class Shell : MonoBehaviour
    private SpriteRenderer sprite; 
    public int bulletDamage = 100; 
    private EnemyAI enemy; 
-   private Vector3 Traveldirection; 
+   private UnityEngine.Vector3 targetPoint; 
+   private UnityEngine.Vector3 Traveldirection; 
    public float splashRange = 1f; 
 
    private AudioSource sound; 
@@ -35,13 +37,17 @@ public class Shell : MonoBehaviour
     sound.pitch = 1.5f;
    }
 
-   public void setTravelDirection(Vector3 TravelDirection){
+   public void setTravelDirection(UnityEngine.Vector3 TravelDirection){
     this.Traveldirection = TravelDirection;
+   }
+
+   public void setTargtPoint(UnityEngine.Vector3 targetPoint) {
+        this.targetPoint = targetPoint; 
    }
 
    private void OnCollisionEnter2D(Collision2D col) {
 
-    GameObject hitExplode = Instantiate(explosionPrefab,warHead.position,Quaternion.identity); 
+    GameObject hitExplode = Instantiate(explosionPrefab,warHead.position, UnityEngine.Quaternion.identity); 
     boxCol.enabled = false; 
     sprite.enabled = false; 
 
@@ -52,7 +58,7 @@ public class Shell : MonoBehaviour
        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position,splashRange);
         foreach(Collider2D hitCollider in hitColliders) {
 
-            Vector3 forceVector = (Vector3) hitCollider.ClosestPoint(transform.position)-transform.position; 
+            UnityEngine.Vector3 forceVector = (UnityEngine.Vector3) hitCollider.ClosestPoint(transform.position)-transform.position; 
             enemy = hitCollider.GetComponent<EnemyAI>();
             if (enemy!= null){
                 enemy.damage(bulletDamage);

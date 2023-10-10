@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ArtyTarget : MonoBehaviour
@@ -7,7 +8,9 @@ public class ArtyTarget : MonoBehaviour
 
      private ArtyWeapon weapon;
 
-    private Vector3 enemyPos; 
+    private Vector3 targetPos; 
+
+    private List<Vector3> enemyPosList; 
 
  
     public float radius = 100f; 
@@ -15,7 +18,7 @@ public class ArtyTarget : MonoBehaviour
 
     private void Awake() {
         weapon = GetComponent<ArtyWeapon>();
-
+        enemyPosList = new List<Vector3>(); 
     }
    
 
@@ -27,17 +30,41 @@ public class ArtyTarget : MonoBehaviour
 
             if (hitCollider.TryGetComponent<EnemyAI>(out EnemyAI enemy)){
 
-                if(enemy.getDeadState()==false) {
-               enemyPos = enemy.transform.position;
-               StartCoroutine(weapon.Fire(enemyPos));}
+                enemyPosList.Add(enemy.transform.position); 
 
-
+            //     if(enemy.getDeadState()==false) {
+            //    enemyPos = enemy.transform.position;
+            //    StartCoroutine(weapon.Fire(enemyPos));}
             }
+        }
 
-           
+        if(enemyPosList.Count > 0) {
+
+           targetPos = midPoint(enemyPosList); 
+           StartCoroutine(weapon.Fire(targetPos)); 
+
         }
 
 
+
+
+    }
+
+
+    private Vector3 midPoint(List<Vector3> enemyPosList) {
+        float averageX = 0.0f; 
+        float averageY = 0.0f; 
+
+        foreach (Vector3 enemyPos in enemyPosList){
+            averageX+= enemyPos.x; 
+            averageY += enemyPos.y; 
+        }
+
+        averageX = averageX / enemyPosList.Count;
+
+        averageY = averageY / enemyPosList.Count; 
+
+        return new Vector3(averageX,averageY,0.0f); 
     }
  
 }

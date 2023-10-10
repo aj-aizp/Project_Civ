@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,7 +39,7 @@ public class ArtyWeapon : MonoBehaviour
    aimVector = targetPos - gunPoint.position;
   
 
- //  float rotationZ1 = Mathf.Atan2(aimVector.y, aimVector.x) * Mathf.Rad2Deg;
+  float rotationZ1 = Mathf.Atan2(aimVector.y, aimVector.x) * Mathf.Rad2Deg;
 
    //add variation to bullet trajectory
    randomNum = UnityEngine.Random.Range(-.7f,.7f); 
@@ -48,13 +49,13 @@ public class ArtyWeapon : MonoBehaviour
    float rotationZ2 = Mathf.Atan2(aimVector.y, aimVector.x) * Mathf.Rad2Deg;
    aimVector = aimVector.normalized;
 
-   //get absolute value of rotation. If greater than 90, flip on x axis. 
-//    if(Math.Abs(rotationZ1) > 90f) {
-//     sprite.flipX = true;
-//    }
-//    else{
-//     sprite.flipX = false;
-//    }
+  //  get absolute value of rotation. If greater than 90, flip on x axis. 
+   if(Math.Abs(rotationZ1) > 90f) {
+    sprite.flipX = true;
+   }
+   else{
+    sprite.flipX = false;
+   }
 
 
   UnityEngine.Quaternion rotation = UnityEngine.Quaternion.Euler(0.0f,0.0f, rotationZ2);
