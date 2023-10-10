@@ -71,12 +71,13 @@ public class ArtyWeapon : MonoBehaviour
           GameObject shell = Instantiate(shellPrefab, gunPoint.position,rotation); 
 
           if(shell.TryGetComponent<Shell>(out Shell unionShell )) {
-          unionShell.setTravelDirection(aimVector); }
+          unionShell.setTravelDirection(aimVector);
+          unionShell.setTargtPoint(targetPos); 
+          }
           else{
             shell.GetComponent<EnemyBullet>().setTravelDirection(aimVector);
           }
 
-          
 
           shell.GetComponent<Rigidbody2D>().AddForce(aimVector * shotForce, ForceMode2D.Impulse);
           Destroy(shell, 10f);             //Destroys shell
