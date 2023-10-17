@@ -31,6 +31,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1895386235551147713, guid: 01a63e36641d8f94e9df2a1bb5de9fce, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: df55066844ccaad409024c99058eec1f, type: 2}
     - target: {fileID: 1895386235551147722, guid: 01a63e36641d8f94e9df2a1bb5de9fce, type: 3}
       propertyPath: m_IsTrigger
       value: 0

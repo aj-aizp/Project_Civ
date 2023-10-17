@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
 
-    [SerializeField] private Material flashMaterial; 
-    private float flashDuration; 
+    [SerializeField] private Color _flashColor = Color.white;
+    private float flashtime; 
 
-    private Material originMaterial; 
-    private Coroutine flashRoutine; 
+    private Coroutine DamageFlashCoroutine; 
 
     private SpriteRenderer sprite; 
     private Animator enemyAnim; 
@@ -74,40 +74,30 @@ public class EnemyAI : MonoBehaviour
     }
 
     public void damage (int damage) {
-        Debug.Log("Damage Taken" + damage); 
-       // Flash(); 
         this.enemyHealth -=damage;
+        CallDamageFlash(); 
     }
 
-    private void Flash() {
-        if(flashRoutine!=null) {
-            StopCoroutine(flashRoutine);
-        }
-        else {
-            flashRoutine = StartCoroutine(FlashRoutine()); 
-        }
+    private void SetFlashColor() {
+    sprite.material.SetColor("_FlashColor", _flashColor); 
     }
 
-    public IEnumerator FlashRoutine() {
-        sprite.material = flashMaterial ;
-
-        yield return new WaitForSeconds (flashDuration); 
-
-        sprite.material = originMaterial; 
-
-        flashRoutine = null;   //signals that the coroutine is done 
+    private void SetFlashAmount(float flashAmount) { 
+        sprite.material.SetFloat("_FlashAmount",flashAmount); 
 
     }
 
+    public void CallDamageFlash() {
+        DamageFlashCoroutine = StartCoroutine (DamageFlash()); 
+    }
 
     private void Awake() {
         setSpeed(0.003f);
         enemyHealth = 100; 
-       // flashDuration = 0.5f;
+        flashtime = 0.25f; 
         dead = false;
         isFiring = false; 
         sprite = GetComponent<SpriteRenderer>();
-        originMaterial = sprite.material; 
         enemyAnim = GetComponent<Animator>();
         weaponTarget = GetComponent<EnemyTargetSystem>();
         rb = GetComponent<Rigidbody2D>();
@@ -140,8 +130,24 @@ public class EnemyAI : MonoBehaviour
     yield return null;
    }
 
+   private IEnumerator DamageFlash() {
 
+    //set color 
+    SetFlashColor(); 
 
+    //lerp flash amount
+    float currentFlashAmount = 0f; 
+    float elapsedTime = 0f;
+    while(elapsedTime < flashtime) {
+        elapsedTime += Time.deltaTime; 
+        currentFlashAmount = Mathf.Lerp(1f,0f,elapsedTime/flashtime); 
+        SetFlashAmount(currentFlashAmount); 
+         yield return null; 
+    }
+   
+   }
+
+   
 
 
     private void Update() {
