@@ -114,6 +114,7 @@ public class EnemyAI : MonoBehaviour
         weaponTarget.enabled = false;
         enabled = false;
         transform.rotation = Quaternion.Euler(0,0,90);
+        Messenger.Broadcast(GameEvent.ENEMY_SOL_DEATH); 
        
         Destroy(gameObject,5f);
     }
