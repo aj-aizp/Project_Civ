@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
    private float time;
    private int seconds;
    private int minutes;  
+   private bool isSpawning; 
 
      void OnEnable() {
         Messenger.AddListener(GameEvent.ENEMY_SOL_DEATH, OnEnemySolDeath); 
@@ -31,6 +32,7 @@ public class UIController : MonoBehaviour
     time = 0.0f; 
     seconds = 0; 
     minutes = 0; 
+    isSpawning = false; 
     scoreLabel.text = score.ToString(); 
     secondsLabel.text = seconds.ToString(); 
     minutesLabel.text = minutes.ToString(); 
@@ -43,6 +45,15 @@ private void Update() {
     time += Time.deltaTime; 
     seconds = (int)time % 60 ;
     minutes = (int)time / 60; 
+
+    if(seconds%30 ==0 && isSpawning == false ) {
+        isSpawning = true; 
+        Messenger.Broadcast(GameEvent.WAVE_SPAWN); 
+    }
+
+    if (seconds%30 ==1) {
+        isSpawning = false; 
+    }
     secondsLabel.text = seconds.ToString();
     minutesLabel.text = minutes.ToString(); 
 }

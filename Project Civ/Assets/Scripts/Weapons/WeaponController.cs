@@ -44,14 +44,14 @@ public class WeaponController : MonoBehaviour
    float rotationZ1 = Mathf.Atan2(aimVector.y, aimVector.x) * Mathf.Rad2Deg;
 
    //add variation to bullet trajectory
-   randomNum = UnityEngine.Random.Range(-.7f,.7f); 
+   randomNum = UnityEngine.Random.Range(-.3f,.3f); 
    aimVector.x = aimVector.x + randomNum;
    aimVector.y = aimVector.y + randomNum;
 
    float rotationZ2 = Mathf.Atan2(aimVector.y, aimVector.x) * Mathf.Rad2Deg;
    aimVector = aimVector.normalized;
 
-   //get absolute value of rotation. If greater than 90, flip on x axis. 
+   //get absolute value of rotation. If greater than 90, flip sprite on x axis. 
    if(Math.Abs(rotationZ1) > 90f) {
     sprite.flipX = true;
    }
