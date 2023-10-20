@@ -11,7 +11,7 @@ public class TargetSystem : MonoBehaviour
     private WeaponController weapon;
 
     private Vector3 enemyPos; 
-    private List<Vector3> targetPos; 
+    private List<Vector3> targetPosList; 
 
  
     public float radius = 50f; 
@@ -19,7 +19,7 @@ public class TargetSystem : MonoBehaviour
 
     private void Awake() {
         weapon = GetComponent<WeaponController>();
-        targetPos = new List<Vector3>();
+        targetPosList = new List<Vector3>();
 
     }
 
@@ -33,22 +33,22 @@ public class TargetSystem : MonoBehaviour
 
                 if(enemy.getDeadState()==false) {
 
-                    targetPos.Add(enemy.transform.position); 
+                    targetPosList.Add(enemy.transform.position); 
                //enemyPos = enemy.transform.position;
               // StartCoroutine(weapon.Fire(enemyPos));
               }
             } 
         }
 
-        if(targetPos.Count >1){
-            StartCoroutine(weapon.Fire(closestPoint(targetPos)));
+        if(targetPosList.Count >1){
+            StartCoroutine(weapon.Fire(closestPoint(targetPosList)));
 
         }
-        else if (targetPos.Count ==1) {
-            StartCoroutine(weapon.Fire(targetPos[0]));
+        else if (targetPosList.Count ==1) {
+            StartCoroutine(weapon.Fire(targetPosList[0]));
         }
 
-        targetPos.Clear();
+        targetPosList.Clear();
 
     }
 

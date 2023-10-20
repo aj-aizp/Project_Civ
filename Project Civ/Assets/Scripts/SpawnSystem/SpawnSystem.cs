@@ -13,7 +13,7 @@ public class SpawnSystem : MonoBehaviour
 private List<GameObject> enemiesList = new List<GameObject>();
 public int numEnemies = 0;
 
-private int x; 
+public int x; 
 
     void OnEnable() {
         Messenger.AddListener(GameEvent.WAVE_SPAWN, WaveSpawn); 
@@ -25,7 +25,7 @@ private int x;
 
 
    private void WaveSpawn (){
-    x +=1; 
+   // x +=1; 
     numEnemies = SpawnCurve(x); 
 
     Debug.Log(numEnemies);
@@ -44,7 +44,7 @@ private int x;
 
 void Start() {
 
-    x = 1; 
+   // x = 1; 
 
     numEnemies = SpawnCurve(x); 
 
