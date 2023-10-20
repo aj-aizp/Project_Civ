@@ -10,6 +10,8 @@ public class UnionSol : MonoBehaviour
    private TargetSystem targetSystem;
    
    private WeaponController weapon; 
+
+   private DamageFlash flash; 
    private bool dead;
    private int health; 
 
@@ -23,6 +25,7 @@ public class UnionSol : MonoBehaviour
     health = 100;
     dead = false; 
     movePosition = GetComponent<UnitController>();
+    flash = GetComponent<DamageFlash>(); 
     unionAnim = GetComponent<Animator>();
     rb = GetComponent<Rigidbody2D>();
     targetSystem = GetComponent<TargetSystem>();
@@ -60,6 +63,8 @@ public class UnionSol : MonoBehaviour
 
    public void Damage(int damage){
       this.health -=damage;
+      flash.CallDamageFlash(); 
+
    }
 
    private void Update() {

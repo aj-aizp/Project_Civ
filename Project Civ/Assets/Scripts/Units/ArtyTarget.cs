@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEngine;
 
+using Vector3 = UnityEngine.Vector3; 
+
 public class ArtyTarget : MonoBehaviour
 {
-
+    
      private ArtyWeapon weapon;
 
     private Vector3 targetPos; 
@@ -36,8 +41,8 @@ public class ArtyTarget : MonoBehaviour
             }
         }
 
-        if(enemyPosList.Count >= 4) {
-           targetPos = midPoint(enemyPosList); 
+        if(enemyPosList.Count >= 3) {
+           targetPos = ClosestPoint(enemyPosList); 
            StartCoroutine(weapon.Fire(targetPos)); 
         }
 
@@ -50,7 +55,7 @@ public class ArtyTarget : MonoBehaviour
     }
 
 
-    private Vector3 midPoint(List<Vector3> enemyPosList) {
+    private Vector3 MidPoint(List<Vector3> enemyPosList) {
         float averageX = 0.0f; 
         float averageY = 0.0f; 
 
@@ -64,6 +69,25 @@ public class ArtyTarget : MonoBehaviour
         averageY = averageY / enemyPosList.Count; 
 
         return new Vector3(averageX,averageY,0.0f); 
+    }
+
+
+
+    private Vector3 ClosestPoint(List<Vector3> enemyPosList) {
+
+       Vector3 midPoint = MidPoint(enemyPosList); 
+        float minDistance = Vector3.Distance(midPoint,enemyPosList[0]);
+        float tempDistance = 0f; 
+        Vector3 closestPoint = enemyPosList[0]; 
+
+        foreach (Vector3 enemPos in enemyPosList) {
+            tempDistance = Vector3.Distance(midPoint, enemPos); 
+            if(tempDistance < minDistance) {
+                closestPoint = enemPos; 
+            }
+        }
+
+        return closestPoint;  
     }
  
 }

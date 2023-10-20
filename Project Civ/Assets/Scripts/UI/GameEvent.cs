@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+//Defines Game Events for event system 
 public static class GameEvent
 {
 

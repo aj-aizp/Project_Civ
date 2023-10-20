@@ -6,11 +6,9 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
+     private Coroutine DamageFlashCoroutine; 
 
-    [SerializeField] private Color _flashColor = Color.white;
-    private float flashtime; 
-
-    private Coroutine DamageFlashCoroutine; 
+    private DamageFlash flash; 
 
     private SpriteRenderer sprite; 
     private Animator enemyAnim; 
@@ -75,29 +73,16 @@ public class EnemyAI : MonoBehaviour
 
     public void damage (int damage) {
         this.enemyHealth -=damage;
-        CallDamageFlash(); 
-    }
-
-    private void SetFlashColor() {
-    sprite.material.SetColor("_FlashColor", _flashColor); 
-    }
-
-    private void SetFlashAmount(float flashAmount) { 
-        sprite.material.SetFloat("_FlashAmount",flashAmount); 
-
-    }
-
-    public void CallDamageFlash() {
-        DamageFlashCoroutine = StartCoroutine (DamageFlash()); 
+        flash.CallDamageFlash(); 
     }
 
     private void Awake() {
         setSpeed(0.003f);
-        enemyHealth = 100; 
-        flashtime = 0.25f; 
+        enemyHealth = 100;  
         dead = false;
         isFiring = false; 
         sprite = GetComponent<SpriteRenderer>();
+        flash = GetComponent<DamageFlash>(); 
         enemyAnim = GetComponent<Animator>();
         weaponTarget = GetComponent<EnemyTargetSystem>();
         rb = GetComponent<Rigidbody2D>();
@@ -130,26 +115,6 @@ public class EnemyAI : MonoBehaviour
 
     yield return null;
    }
-
-   private IEnumerator DamageFlash() {
-
-    //set color 
-    SetFlashColor(); 
-
-    //lerp flash amount
-    float currentFlashAmount = 0f; 
-    float elapsedTime = 0f;
-    while(elapsedTime < flashtime) {
-        elapsedTime += Time.deltaTime; 
-        currentFlashAmount = Mathf.Lerp(1f,0f,elapsedTime/flashtime); 
-        SetFlashAmount(currentFlashAmount); 
-         yield return null; 
-    }
-   
-   }
-
-   
-
 
     private void Update() {
         if(enemyHealth <=0){

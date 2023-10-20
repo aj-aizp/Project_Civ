@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: fireRate
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2172711409357681249, guid: 440241aa72d481a47aadef3334d7211c, type: 3}
+      propertyPath: radius
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4986429542380763475, guid: 440241aa72d481a47aadef3334d7211c, type: 3}
       propertyPath: m_RootOrder
       value: 0

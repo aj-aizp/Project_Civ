@@ -42,7 +42,7 @@ public class ArtyWeapon : MonoBehaviour
   float rotationZ1 = Mathf.Atan2(aimVector.y, aimVector.x) * Mathf.Rad2Deg;
 
    //add variation to bullet trajectory
-   randomNum = UnityEngine.Random.Range(-.7f,.7f); 
+   randomNum = UnityEngine.Random.Range(-.3f,.3f); 
    aimVector.x = aimVector.x + randomNum;
    aimVector.y = aimVector.y + randomNum;
 

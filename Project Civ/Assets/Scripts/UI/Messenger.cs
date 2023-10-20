@@ -1,13 +1,4 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-
-// public class Messenger 
-// {
-
-
-
- // Messenger.cs v1.0 by Magnus Wolffelt, magnus.wolffelt@gmail.com
+// Messenger.cs v1.0 by Magnus Wolffelt, magnus.wolffelt@gmail.com
 // Version 1.4 by Julie Iaccarino, biscuitWizard @ github.com
 //
 // Inspired by and based on Rod Hyde's Messenger:

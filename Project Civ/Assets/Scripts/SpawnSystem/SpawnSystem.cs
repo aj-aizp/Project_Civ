@@ -63,8 +63,7 @@ void Start() {
 
 
 private int SpawnCurve (int x) {
-
-    int y = x * 5; 
+    int y = x * 10; 
     return y; 
 
 }
