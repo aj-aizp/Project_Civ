@@ -27,6 +27,8 @@ public class UIController : MonoBehaviour
     scoreLabel.text = score.ToString(); 
    }
 
+
+
    private void Start() {
     score = 0; 
     time = 0.0f; 
@@ -54,6 +56,13 @@ private void Update() {
     if (seconds%30 ==1) {
         isSpawning = false; 
     }
+
+    if(Input.GetKeyUp("q") && score >=100){
+        Messenger<int>.Broadcast(GameEvent.SOLDIER_BOUGHT, score);
+        score -=100;
+    }
+    
+    scoreLabel.text = score.ToString(); 
     secondsLabel.text = seconds.ToString();
     minutesLabel.text = minutes.ToString(); 
 }

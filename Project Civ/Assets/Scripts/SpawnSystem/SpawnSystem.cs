@@ -11,9 +11,9 @@ public class SpawnSystem : MonoBehaviour
 [SerializeField] GameObject enemyPrefab;
 
 private List<GameObject> enemiesList = new List<GameObject>();
-public int numEnemies = 0;
+private int numEnemies = 0;
 
-public int x; 
+private int x; 
 
     void OnEnable() {
         Messenger.AddListener(GameEvent.WAVE_SPAWN, WaveSpawn); 
@@ -25,7 +25,7 @@ public int x;
 
 
    private void WaveSpawn (){
-   // x +=1; 
+    x+=1; 
     numEnemies = SpawnCurve(x); 
 
     Debug.Log(numEnemies);
@@ -44,7 +44,7 @@ public int x;
 
 void Start() {
 
-   // x = 1; 
+    x = 1; 
 
     numEnemies = SpawnCurve(x); 
 
