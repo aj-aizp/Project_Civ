@@ -57,12 +57,12 @@ private void Update() {
         isSpawning = false; 
     }
 
-    if(Input.GetKeyUp("q") && score >=100){
+    if(Input.GetKeyUp("1") && score >=100){
         Messenger<int>.Broadcast(GameEvent.SOLDIER_BOUGHT, score);
         score -=100;
     }
 
-    if(Input.GetKeyUp("w") && score >=1000) {
+    if(Input.GetKeyUp("2") && score >=1000) {
         Messenger.Broadcast(GameEvent.ARTY_BOUGHT);
         score -=1000;
     }

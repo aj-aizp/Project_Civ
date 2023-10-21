@@ -4872,6 +4872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedArea: {fileID: 1764168975}
+  modNumber: 20
 --- !u!4 &2089753691
 Transform:
   m_ObjectHideFlags: 0
@@ -56852,7 +56853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6536738766826630422, guid: 3989eea6269f6a04c98aa62de9f99865, type: 3}
       propertyPath: startSoldiers
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3989eea6269f6a04c98aa62de9f99865, type: 3}

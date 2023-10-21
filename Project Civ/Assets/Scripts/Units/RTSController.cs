@@ -6,6 +6,8 @@ using UnityEngine;
 public class RTSController : MonoBehaviour
 {
 [SerializeField] private Transform selectedArea;
+
+[SerializeField] private int modNumber = 20; 
     private Vector3 startPos; 
     private Vector3 worldPos; 
 
@@ -74,7 +76,7 @@ public class RTSController : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0; 
 
-        List<Vector3> movePositionsList = GetPositionList(mousePos, 0.5f ,selectedUnits.Count, 10);
+        List<Vector3> movePositionsList = GetPositionList(mousePos, 0.5f ,selectedUnits.Count, modNumber);
 
         int movePositionIndex = 0;
 
