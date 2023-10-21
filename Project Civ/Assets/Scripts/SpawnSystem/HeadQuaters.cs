@@ -10,14 +10,18 @@ public class HeadQuaters : MonoBehaviour
 
     [SerializeField] GameObject soldierPrefab;
 
-    [SerializeField] public int numSoldiers; 
+    [SerializeField] GameObject artyPrefab; 
+
+    [SerializeField] public int startSoldiers = 3; 
 
     void OnEnable() {
-        Messenger<int>.AddListener(GameEvent.SOLDIER_BOUGHT, OnSoldierBought); 
+    Messenger<int>.AddListener(GameEvent.SOLDIER_BOUGHT, OnSoldierBought); 
+    Messenger.AddListener(GameEvent.ARTY_BOUGHT,OnArtyBought); 
    }
 
    void OnDisable() {
     Messenger<int>.RemoveListener(GameEvent.SOLDIER_BOUGHT, OnSoldierBought); 
+    Messenger.RemoveListener(GameEvent.ARTY_BOUGHT,OnArtyBought); 
    }
 
    private void OnSoldierBought(int score){
@@ -36,18 +40,30 @@ public class HeadQuaters : MonoBehaviour
     
    }
 
+   private void OnArtyBought() {
+
+    int i = UnityEngine.Random.Range(0,transform.childCount);
+
+    UnityEngine.Vector3 spawnPos = transform.GetChild(i).gameObject.transform.position;
+
+     GameObject newSoldier = Instantiate(artyPrefab,spawnPos,quaternion.identity); 
+
+   }
+
+
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
 
-        while(numSoldiers > 0) {
+        while(startSoldiers > 0) {
             GameObject soldier = Instantiate(soldierPrefab,spawnPoint.position,quaternion.identity);
-            numSoldiers--;
+            startSoldiers--;
         }
-
-
-        
+ 
     }
 
 

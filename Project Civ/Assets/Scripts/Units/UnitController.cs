@@ -33,17 +33,22 @@ public class UnitController : MonoBehaviour
     transform.position = Vector3.MoveTowards(transform.position,movePosition,speed+Time.deltaTime);  //Smooth movement 
     
 
-    moving = transform.position != movePosition;
+ //FIX OR REPLACE THIS CODE 
+
+
+    // moving = transform.position != movePosition;
     
 
-    if (moving) {
-        animator.SetBool("isMoving",true);
-        animator.SetBool("isShooting",false);
-    }
+    // if (moving) {
+    //     animator.SetBool("isMoving",true);
+    //     animator.SetBool("isShooting",false);
+    // }
 
-    else{
-        animator.SetBool("isMoving",false);
-    }
+    // else{
+    //     animator.SetBool("isMoving",false);
+    // }
+
+    
         
     }
 

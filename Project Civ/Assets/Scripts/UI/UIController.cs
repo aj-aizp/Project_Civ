@@ -61,6 +61,11 @@ private void Update() {
         Messenger<int>.Broadcast(GameEvent.SOLDIER_BOUGHT, score);
         score -=100;
     }
+
+    if(Input.GetKeyUp("w") && score >=1000) {
+        Messenger.Broadcast(GameEvent.ARTY_BOUGHT);
+        score -=1000;
+    }
     
     scoreLabel.text = score.ToString(); 
     secondsLabel.text = seconds.ToString();
