@@ -57023,6 +57023,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6536738766826630422, guid: 3989eea6269f6a04c98aa62de9f99865, type: 3}
+      propertyPath: soldierPrefab
+      value: 
+      objectReference: {fileID: 2692553381795344544, guid: 33c88d5201bd5ef4e909a7c39288a9cf, type: 3}
+    - target: {fileID: 6536738766826630422, guid: 3989eea6269f6a04c98aa62de9f99865, type: 3}
       propertyPath: startSoldiers
       value: 15
       objectReference: {fileID: 0}

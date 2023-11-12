@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -333125299, guid: 05a29115ef19a024aa5a5b3b012b3ed6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.15, y: 0.64}
@@ -110,7 +110,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.67067, y: 0.1488}
+    pivot: {x: 0.67067, y: 0.5022}
     oldSize: {x: 1.15, y: 0.64}
     newSize: {x: 1.15, y: 0.64}
     adaptiveTilingThreshold: 0.5
@@ -186,13 +186,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.788
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 194
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -230,7 +230,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2369b038bd33d34fb6140b1e431b216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 50
+  radius: 5
 --- !u!114 &7160639420283857350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,7 +350,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5430844577078143806}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.017, y: 0.224, z: 0}
+  m_LocalPosition: {x: -0.017, y: -0.021, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

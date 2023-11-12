@@ -50,7 +50,7 @@ private UnityEngine.Vector3 aimVector;
    aimVector = aimVector.normalized;
 
    //get absolute value of rotation. If greater than 90, flip sprite on x axis. 
-   if(Math.Abs(rotationZ1) > 90f) {
+   if(Math.Abs(rotationZ1) < 90f) {
     sprite.flipX = true;
    }
    else{
