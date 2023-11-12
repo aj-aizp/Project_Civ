@@ -28,7 +28,7 @@ public class UnionSol : MonoBehaviour
     flash = GetComponent<DamageFlash>(); 
     unionAnim = GetComponent<Animator>();
     rb = GetComponent<Rigidbody2D>();
-    targetSystem = GetComponent<TargetSystem>();
+   // targetSystem = GetComponent<TargetSystem>();
     selectedSprite = transform.Find("SelectedSprite").gameObject;
     SetSelectedVisible(false);
     deadLayer = LayerMask.NameToLayer("DeadBodies");
@@ -54,7 +54,7 @@ public class UnionSol : MonoBehaviour
       gameObject.layer = deadLayer;
       movePosition.enabled = false; 
       dead = true;
-      targetSystem.enabled = false; 
+     // targetSystem.enabled = false; 
       unionAnim.enabled = false; 
       enabled = false;
       transform.rotation = Quaternion.Euler(0,0,90);
