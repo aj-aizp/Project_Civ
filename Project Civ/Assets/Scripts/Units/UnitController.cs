@@ -45,7 +45,7 @@ public class UnitController : MonoBehaviour
              animator.Play("Union_Move", 0,1f);
             break; 
             case 2:
-            animator.Play("Walking_Rifle",0,1f);
+            animator.SetBool("isMoving",true);
             break;
         }
      }
@@ -57,7 +57,7 @@ public class UnitController : MonoBehaviour
              animator.Play("Union_Idle", 0,1f);
             break; 
             case 2:
-             animator.Play("Idle",0,1f);
+             animator.SetBool("isMoving",false);
             break; 
 
          }
