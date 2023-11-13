@@ -14,36 +14,30 @@ public class UnitController : MonoBehaviour
     public float speed = 1f;
     private bool moving;
 
-    private void Start() {
-        animator = transform.GetComponent<Animator>();
-        
-    }
-
     public void setMovePosition (Vector3 movePosition) {
         this.movePosition = movePosition; 
     }
 
     private void Awake() {
+        animator = transform.GetComponent<Animator>();
         movePosition = transform.position;
-        soldierType = transform.GetComponent<UnionSol>().getSoldierType(); 
     }
 
 
 //Move to Mouse Click Position (World Space)
- void Update() {
+ private void Update() {
 
     transform.position = Vector3.MoveTowards(transform.position,movePosition,speed+Time.deltaTime);  //Smooth movement 
-    
 
- //FIX OR REPLACE THIS CODE 
     moving = transform.position != movePosition;
+    soldierType = transform.GetComponent<UnionSol>().getSoldierType(); 
     
-
      if (moving) {
         switch(soldierType) {
             case 1:
              animator.Play("Union_Move", 0,1f);
             break; 
+
             case 2:
             animator.SetBool("isMoving",true);
             break;
@@ -65,7 +59,5 @@ public class UnitController : MonoBehaviour
 
     }
 
-
-   
 
 }

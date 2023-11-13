@@ -49,7 +49,4 @@ public void disableMove() {
       return soldierType; 
    }
 
-   private void Update(){
-
-   }
 }
