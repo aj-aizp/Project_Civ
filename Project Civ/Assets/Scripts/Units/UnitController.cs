@@ -10,6 +10,7 @@ public class UnitController : MonoBehaviour
   
     private Animator animator;  
     private Vector3 movePosition;
+    private int soldierType; 
     public float speed = 1f;
     private bool moving;
 
@@ -24,6 +25,7 @@ public class UnitController : MonoBehaviour
 
     private void Awake() {
         movePosition = transform.position;
+        soldierType = transform.GetComponent<UnionSol>().getSoldierType(); 
     }
 
 
@@ -34,22 +36,36 @@ public class UnitController : MonoBehaviour
     
 
  //FIX OR REPLACE THIS CODE 
-
-
-    // moving = transform.position != movePosition;
+    moving = transform.position != movePosition;
     
 
-    // if (moving) {
-    //     animator.SetBool("isMoving",true);
-    //     animator.SetBool("isShooting",false);
-    // }
+     if (moving) {
+        switch(soldierType) {
+            case 1:
+             animator.Play("Union_Move", 0,1f);
+            break; 
+            case 2:
+            animator.Play("Walking_Rifle",0,1f);
+            break;
+        }
+     }
+     else{
+         moving = false; 
 
-    // else{
-    //     animator.SetBool("isMoving",false);
-    // }
+         switch(soldierType){
+            case 1:
+             animator.Play("Union_Idle", 0,1f);
+            break; 
+            case 2:
+             animator.Play("Idle",0,1f);
+            break; 
 
-    
-        
+         }
+     }
+
     }
+
+
+   
 
 }

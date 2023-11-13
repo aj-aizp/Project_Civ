@@ -25,7 +25,7 @@ public class EnemyTargetSystem : MonoBehaviour
 
         foreach (Collider2D hitCollider in hitColliders){
 
-            if (hitCollider.TryGetComponent<TargetSystem>(out TargetSystem enemy)){
+            if (hitCollider.TryGetComponent<UnionSol>(out UnionSol enemy)){
 
                 enemyAI.setIsFiring(true);
             
