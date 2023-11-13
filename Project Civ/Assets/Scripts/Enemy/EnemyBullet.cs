@@ -6,7 +6,7 @@ public class EnemyBullet : MonoBehaviour
 {
    public int bulletDamage = 10; 
    private UnionSol union; 
-     private Vector3 Traveldirection;
+   private Vector3 Traveldirection;
 
 
 
@@ -18,10 +18,21 @@ public class EnemyBullet : MonoBehaviour
 
     union = col.gameObject.GetComponent<UnionSol>();
 
-    if(union!=null){
-        union.Damage(bulletDamage); 
-        union.setDamageVector(Traveldirection);
+    if (union !=null) {
+    int unionType = union.getSoldierType(); 
+    switch(unionType){
+      case 1: 
+      col.gameObject.GetComponent<v1_AI>().Damage(bulletDamage); 
+      col.gameObject.GetComponent<v1_AI>().setDamageVector(Traveldirection); 
+      break;
+
+      case 2: 
+      col.gameObject.GetComponent<V4_AI>().Damage(bulletDamage); 
+      col.gameObject.GetComponent<V4_AI>().setDamageVector(Traveldirection); 
+      break; 
     }
+
+}
     Destroy(gameObject);
 
    }

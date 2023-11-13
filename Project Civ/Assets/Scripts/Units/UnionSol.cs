@@ -1,40 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UnionSol : MonoBehaviour
 {
-   private GameObject selectedSprite;
-   private UnitController movePosition;
-   private Animator unionAnim; 
-   private TargetSystem targetSystem;
    
-   private WeaponController weapon; 
+    private GameObject selectedSprite;
+    private UnitController movePosition;
+    private bool dead;
 
-   private DamageFlash flash; 
-   private bool dead;
-   private int health; 
+    private int soldierType; 
 
-   private int deadLayer;
 
-   private Rigidbody2D rb;
+private void Awake(){
+   dead = false; 
+   movePosition = GetComponent<UnitController>();
+   selectedSprite = transform.Find("SelectedSprite").gameObject;
+   SetSelectedVisible(false);
+  
+}
 
-   private Vector3 damageVector;
+public void disableMove() {
+   movePosition.enabled = false; 
+}
 
-   private void Awake() {
-    health = 100;
-    dead = false; 
-    movePosition = GetComponent<UnitController>();
-    flash = GetComponent<DamageFlash>(); 
-    unionAnim = GetComponent<Animator>();
-    rb = GetComponent<Rigidbody2D>();
-   // targetSystem = GetComponent<TargetSystem>();
-    selectedSprite = transform.Find("SelectedSprite").gameObject;
-    SetSelectedVisible(false);
-    deadLayer = LayerMask.NameToLayer("DeadBodies");
-   }
-
-   public void SetSelectedVisible(bool visible) {
+ public void SetSelectedVisible(bool visible) {
     selectedSprite.SetActive(visible);
    }
 
@@ -42,49 +33,23 @@ public class UnionSol : MonoBehaviour
     movePosition.setMovePosition(position); 
    }
 
-   public void setDamageVector(Vector3 damageVector){
-      this.damageVector = damageVector;
-   }
-
-   public bool getDeathState(){
+    public bool getDeathState(){
       return dead;
    }
-   private void Death(){
-      StartCoroutine(deathVelocity(new Vector2 (damageVector.x,damageVector.y)));
-      gameObject.layer = deadLayer;
-      movePosition.enabled = false; 
-      dead = true;
-     // targetSystem.enabled = false; 
-      unionAnim.enabled = false; 
-      enabled = false;
-      transform.rotation = Quaternion.Euler(0,0,90);
-      Destroy(gameObject,5f);
+
+   public void setDeathState (bool dead) {
+      this.dead = dead; 
    }
 
-   public void Damage(int damage){
-      this.health -=damage;
-      flash.CallDamageFlash(); 
-
+   public void setSoldierType(int soldierType) {
+      this.soldierType = soldierType; 
    }
 
-   private void Update() {
-
-      if(health <=0){
-         Death();
-      }
-      
+   public int getSoldierType(){
+      return soldierType; 
    }
 
+   private void Update(){
 
-   public IEnumerator deathVelocity(Vector2 deathVector){
-
-    rb.velocity = deathVector* 3f;
-    
-    yield return new WaitForSeconds(.3f);
-
-    rb.velocity = new Vector2 (0f,0f);
-
-    yield return null;
    }
-
 }

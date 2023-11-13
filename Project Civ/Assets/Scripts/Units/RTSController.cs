@@ -76,7 +76,7 @@ public class RTSController : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0; 
 
-        List<Vector3> movePositionsList = GetPositionList(mousePos, 0.5f ,selectedUnits.Count, modNumber);
+        List<Vector3> movePositionsList = GetPositionList(mousePos, 0.7f ,selectedUnits.Count, modNumber);
 
         int movePositionIndex = 0;
 
