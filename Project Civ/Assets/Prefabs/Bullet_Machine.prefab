@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6230181811014160675}
   - component: {fileID: 4292613662952855329}
   m_Layer: 6
-  m_Name: Bullet_V4
+  m_Name: Bullet_Machine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 788e076a8b2ffec4c9c756ba08067591, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f57c56fafe9419b4d92ba118dabbaa1f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

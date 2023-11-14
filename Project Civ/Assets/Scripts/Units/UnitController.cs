@@ -41,6 +41,10 @@ public class UnitController : MonoBehaviour
             case 2:
             animator.SetBool("isMoving",true);
             break;
+
+            case 3:
+            animator.SetBool("Machine_Move", true);
+            break; 
         }
      }
      else{
@@ -52,6 +56,10 @@ public class UnitController : MonoBehaviour
             break; 
             case 2:
              animator.SetBool("isMoving",false);
+            break; 
+
+            case 3:
+            animator.SetBool("Machine_Move", false); 
             break; 
 
          }

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class V4_AI : MonoBehaviour
+public class MachineGunner_AI : MonoBehaviour
 {
-   private UnionSol union; 
+    private UnionSol union; 
    private Animator unionAnim; 
-   private V4_Target_System targetSystem;
+   private MachineGunner_Target targetSystem;
    
-   private V4_Weapon_Con weapon; 
+   private MachineGunner_Weapon weapon; 
 
    private DamageFlash flash; 
   
@@ -25,10 +25,10 @@ public class V4_AI : MonoBehaviour
     flash = GetComponent<DamageFlash>(); 
     unionAnim = GetComponent<Animator>();
     rb = GetComponent<Rigidbody2D>();
-    targetSystem = GetComponent<V4_Target_System>();
+    targetSystem = GetComponent<MachineGunner_Target>();
     deadLayer = LayerMask.NameToLayer("DeadBodies");
     union = GetComponent<UnionSol>();
-    union.setSoldierType(2); 
+    union.setSoldierType(3); 
     union.setDeathState(false);  
    }
 
@@ -40,15 +40,16 @@ public class V4_AI : MonoBehaviour
 
   
    private void Death(){
+      unionAnim.Play("MachineGunner_Death", 0,1f);
       StartCoroutine(deathVelocity(new Vector2 (damageVector.x,damageVector.y)));
       gameObject.layer = deadLayer;
       union.disableMove(); 
       union.setDeathState(true); 
       targetSystem.enabled = false; 
-      unionAnim.enabled = false; 
+     // unionAnim.enabled = false; 
       enabled = false;
       transform.rotation = Quaternion.Euler(0,0,90);
-      Destroy(gameObject,5f);
+      Destroy(gameObject,1f);
    }
 
    public void Damage(int damage){

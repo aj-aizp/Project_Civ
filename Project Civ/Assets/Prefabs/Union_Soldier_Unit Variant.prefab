@@ -224,7 +224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 805559792534706204, guid: dafa875d7e01ebc4dafc604b10c4c7ae, type: 3}
       propertyPath: m_FlipX
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 805559792534706204, guid: dafa875d7e01ebc4dafc604b10c4c7ae, type: 3}
       propertyPath: m_FlipY
@@ -286,7 +286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9192dfb6d74bec84ea2662043dd81071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePosition: {fileID: 507558035052942926}
 --- !u!114 &310426966710954722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,18 +309,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b67a5b3d272c35048aafa1b263e4f88d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  union: {fileID: -8172682567037445098}
---- !u!114 &507558035052942926 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 805559792534706194, guid: dafa875d7e01ebc4dafc604b10c4c7ae, type: 3}
-  m_PrefabInstance: {fileID: 875625818861571676}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 507558035052942913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccb7d29fd6c7dab459f1fcc8dd2a05ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &507558035052942927 stripped

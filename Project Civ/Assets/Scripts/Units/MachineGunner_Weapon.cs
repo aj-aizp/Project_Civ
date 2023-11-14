@@ -1,9 +1,9 @@
-using System;
+using System; 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class V4_Weapon_Con : MonoBehaviour
+public class MachineGunner_Weapon : MonoBehaviour
 {
 [SerializeField] GameObject bulletPrefab;
 [SerializeField] AudioClip gunShot; 
@@ -17,27 +17,25 @@ public float firerate;
 private float nextfire;
 
 private float randomNum; 
+private Vector3 aimVector;
 
-private UnityEngine.Vector3 aimVector;
+private Vector3 aimPoint; 
 
-
- void Start() {
-
-    gunPoint = transform.GetComponentInChildren<Transform>();
-
+  void Awake() {
     sprite = transform.GetComponent<SpriteRenderer>();
 
     animator = transform.GetComponent<Animator>();
 
     soundSource = transform.GetComponent<AudioSource>();
 
+    gunPoint = gameObject.transform.Find("GunPoint").transform;
   }
 
 
 
   public IEnumerator Fire(Vector3 targetPos){
 
-   aimVector = targetPos - gunPoint.position;
+   aimVector = targetPos - gunPoint.transform.position;
   
    float rotationZ1 = Mathf.Atan2(aimVector.y, aimVector.x) * Mathf.Rad2Deg;
 
@@ -48,27 +46,26 @@ private UnityEngine.Vector3 aimVector;
 
    float rotationZ2 = Mathf.Atan2(aimVector.y, aimVector.x) * Mathf.Rad2Deg;
    aimVector = aimVector.normalized;
-
    //get absolute value of rotation. If greater than 90, flip sprite on x axis. 
    if(Math.Abs(rotationZ1) < 90f) {
     sprite.flipX = true;
+   // aimPoint = new Vector3 (-gunPoint.position.x,gunPoint.position.y,0); 
    }
    else{
     sprite.flipX = false;
+   //aimPoint = gunPoint.transform.position; 
    }
-
 
   Quaternion rotation = Quaternion.Euler(0.0f,0.0f, rotationZ2);
 
+    if (Time.time > nextfire && isPlaying(animator,"MachineGunner_Moving") !=true) {
 
-    if (Time.time > nextfire && isPlaying(animator,"Walking_Rifle") !=true) {
-
-          float randomNum2 = UnityEngine.Random.Range(0.0f,1f);
+          float randomNum2 = UnityEngine.Random.Range(0.0f,0.05f);
           nextfire = Time.time + firerate + randomNum2; 
 
-          animator.Play("Shooting_Rifle", 0,1f);
+          animator.Play("MachineGunner_Shooting", 0,1f);
           soundSource.PlayOneShot(gunShot);
-          GameObject bullet = Instantiate(bulletPrefab, gunPoint.position,rotation); 
+          GameObject bullet = Instantiate(bulletPrefab, gunPoint.transform.position,rotation); 
 
           if(bullet.TryGetComponent<Bullet>(out Bullet unionBullet )) {
           unionBullet.setTravelDirection(aimVector); }

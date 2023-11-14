@@ -30,6 +30,11 @@ public class EnemyBullet : MonoBehaviour
       col.gameObject.GetComponent<V4_AI>().Damage(bulletDamage); 
       col.gameObject.GetComponent<V4_AI>().setDamageVector(Traveldirection); 
       break; 
+
+      case 3:
+      col.gameObject.GetComponent<MachineGunner_AI>().Damage(bulletDamage);
+      col.gameObject.GetComponent<MachineGunner_AI>().setDamageVector(Traveldirection); 
+      break;
     }
 
 }
