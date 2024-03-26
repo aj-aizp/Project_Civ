@@ -8,23 +8,34 @@ public class UIController : MonoBehaviour
    [SerializeField] private TMP_Text scoreLabel; 
    [SerializeField] private TMP_Text secondsLabel;
    [SerializeField] private TMP_Text minutesLabel;  
+   [SerializeField] private TMP_Text healthLabel;  
+
    private int score; 
    private float time;
    private int seconds;
    private int minutes;  
    private bool isSpawning; 
+   private int health; 
 
      void OnEnable() {
         Messenger.AddListener(GameEvent.ENEMY_SOL_DEATH, OnEnemySolDeath); 
+        Messenger<int>.AddListener(GameEvent.SAND_HEALTH,sandBagUpdate); 
+        
    }
 
    void OnDisable() {
     Messenger.RemoveListener(GameEvent.ENEMY_SOL_DEATH, OnEnemySolDeath); 
+    Messenger<int>.RemoveListener(GameEvent.SAND_HEALTH,sandBagUpdate); 
    }
 
    private void OnEnemySolDeath() {
     score +=10; 
     scoreLabel.text = score.ToString(); 
+   }
+
+   private void sandBagUpdate(int health) {
+
+    healthLabel.text = health.ToString(); 
    }
 
 

@@ -7,6 +7,7 @@ public class EnemyBullet : MonoBehaviour
    public int bulletDamage = 10; 
    private UnionSol union; 
    private Vector3 Traveldirection;
+   private SandBag sand; 
 
 
 
@@ -17,6 +18,12 @@ public class EnemyBullet : MonoBehaviour
    private void OnCollisionEnter2D(Collision2D col) {
 
     union = col.gameObject.GetComponent<UnionSol>();
+    sand = col.gameObject.GetComponent<SandBag>(); 
+
+
+    if(sand != null) {
+      col.gameObject.GetComponent<SandBag>().Damage(bulletDamage); 
+    }
 
     if (union !=null) {
     int unionType = union.getSoldierType(); 

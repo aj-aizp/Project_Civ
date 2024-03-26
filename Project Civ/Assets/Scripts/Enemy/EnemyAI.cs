@@ -7,25 +7,18 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
      private Coroutine DamageFlashCoroutine; 
-
     private DamageFlash flash; 
-
     private SpriteRenderer sprite; 
     private Animator enemyAnim; 
     private EnemyTargetSystem weaponTarget;
     private Rigidbody2D rb; 
     private GameObject target; 
-
     private Vector3 DamageVector; 
-
      private int enemyID;
     public int enemyHealth; 
     private float speed; 
-
     private int deadLayer;
-
     private bool isFiring; 
-
     private bool dead;
 
 
@@ -104,7 +97,7 @@ public class EnemyAI : MonoBehaviour
         Destroy(gameObject,5f);
     }
 
-
+ //On Death, sends transform in the vector = to the tragectory of the bullet that killed the unit 
    public IEnumerator deathVelocity(Vector2 deathVector){
 
     rb.velocity = deathVector *2f; 
