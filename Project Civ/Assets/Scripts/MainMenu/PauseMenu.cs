@@ -6,7 +6,23 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
    [SerializeField] GameObject pausePanel; 
+   [SerializeField] GameObject gameoverPanel; 
    [SerializeField] GameObject howToPanel; 
+
+
+ void OnEnable() {
+    Messenger.AddListener(GameEvent.GAME_OVER, gameOver); 
+   }
+
+void OnDisable() {
+    Messenger.RemoveListener(GameEvent.GAME_OVER, gameOver); 
+}
+
+   public void gameOver() {
+    gameoverPanel.SetActive(true);
+    Time.timeScale = 0; 
+   }
+
 
 
    public void Pause() {

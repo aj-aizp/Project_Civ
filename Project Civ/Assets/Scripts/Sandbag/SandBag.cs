@@ -14,6 +14,12 @@ public class SandBag : MonoBehaviour
         Messenger<int>.Broadcast(GameEvent.SAND_HEALTH, health);  
     }
 
+    private void Update() {
+        if(health <= 0 ) {
+            Messenger.Broadcast(GameEvent.GAME_OVER); 
+        }
+    }
+
 
    
 }

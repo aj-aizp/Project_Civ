@@ -11,4 +11,5 @@ public static class GameEvent
     public const string SOLDIER_BOUGHT = "SOLDIER_BOUGHT";
     public const string ARTY_BOUGHT = "ARTY_BOUGHT"; 
     public const string SAND_HEALTH = "SAND_HEALTH"; 
+    public const string GAME_OVER = "GAME_OVER"; 
 }
