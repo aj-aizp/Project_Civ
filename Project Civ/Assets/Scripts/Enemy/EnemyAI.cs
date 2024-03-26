@@ -80,7 +80,7 @@ public class EnemyAI : MonoBehaviour
         weaponTarget = GetComponent<EnemyTargetSystem>();
         rb = GetComponent<Rigidbody2D>();
         deadLayer = LayerMask.NameToLayer("DeadBodies");
-        target = GameObject.Find("HQ");
+        target = GameObject.Find("SandBag");
     }
 
 //Sets Enabled to be false, which disables Update function from being called. Then rotates the object and then destroyed after delay. 

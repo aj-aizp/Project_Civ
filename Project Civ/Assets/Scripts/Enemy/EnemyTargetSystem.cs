@@ -10,7 +10,7 @@ public class EnemyTargetSystem : MonoBehaviour
     private Vector3 enemyPos; 
 
  
-    public float radius = 3f; 
+    public float radius = 7f; 
 
 
     private void Awake() {
@@ -24,6 +24,14 @@ public class EnemyTargetSystem : MonoBehaviour
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position,radius);
 
         foreach (Collider2D hitCollider in hitColliders){
+
+            if (hitCollider.TryGetComponent<SandBag> (out SandBag sand)) {
+
+                enemyAI.setIsFiring(true); 
+
+                enemyPos = sand.transform.position; 
+                StartCoroutine(weapon.Fire(enemyPos));
+            }
 
             if (hitCollider.TryGetComponent<UnionSol>(out UnionSol enemy)){
 
