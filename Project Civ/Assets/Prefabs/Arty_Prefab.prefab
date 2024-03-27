@@ -301,5 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shellPrefab: {fileID: 6388196172895435423, guid: dd81b8ce8743aa642ace4cd8a5e4a00a, type: 3}
   mortarShot: {fileID: 8300000, guid: 3ab6dc2e7f4f3154c84a2c3de666969d, type: 3}
+  union: {fileID: 0}
+  targetSystem: {fileID: 2172711409357681249}
   shotForce: 6
   fireRate: 1.5

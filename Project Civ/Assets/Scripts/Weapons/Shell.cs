@@ -17,7 +17,7 @@ public class Shell : MonoBehaviour
   private BoxCollider2D boxCol; 
 
    private SpriteRenderer sprite; 
-   public int bulletDamage = 100; 
+   public int bulletDamage = 50; 
    private EnemyAI enemy; 
    private UnityEngine.Vector3 targetPoint; 
    private UnityEngine.Vector3 Traveldirection; 

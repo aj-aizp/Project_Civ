@@ -7,17 +7,18 @@ public class ArtyWeapon : MonoBehaviour
 {
   [SerializeField] GameObject shellPrefab;
   [SerializeField] AudioClip mortarShot; 
+  [SerializeField] UnionSol union; 
+  [SerializeField] ArtyTarget targetSystem;  
+  private int health = 150; 
   private AudioSource soundSource; 
   private Transform gunPoint; 
   private SpriteRenderer sprite; 
-
   private Animator animator; 
-
   public float shotForce; 
-
   public float fireRate;
   private float nextfire;
   private float randomNum; 
+  private int deadLayer; 
 
   private UnityEngine.Vector3 aimVector; 
 
@@ -30,7 +31,24 @@ public class ArtyWeapon : MonoBehaviour
     animator = transform.GetComponent<Animator>();
 
     soundSource = transform.GetComponent<AudioSource>();
+     deadLayer = LayerMask.NameToLayer("DeadBodies");
 
+  }
+
+     private void Death(){
+      gameObject.layer = deadLayer;
+      union.disableMove(); 
+      union.setDeathState(true); 
+      targetSystem.enabled = false; 
+     // unionAnim.enabled = false; 
+      enabled = false;
+      transform.rotation = Quaternion.Euler(0,0,90);
+      Destroy(gameObject,1f);
+   }
+  private void Update() {
+    if (health<=0) {
+      Death(); 
+    }
   }
 
 
@@ -85,6 +103,14 @@ public class ArtyWeapon : MonoBehaviour
           yield return new WaitForSeconds(.1f);
     }
   
+  }
+
+
+  void OnCollisionEnter2D(Collision2D col) {
+
+    if(col.gameObject.GetComponent<EnemyBullet>() !=null) {
+      health-=10; 
+    }
   }
 
 

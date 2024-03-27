@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour
     private bool isFiring; 
     private bool dead;
 
-
+    //Offset speed so Units don't pile onto eachother 
     private void setSpeed(float speed){
         float speedOffset = UnityEngine.Random.Range(0.000f,0.008f);
         
@@ -97,7 +97,7 @@ public class EnemyAI : MonoBehaviour
         Destroy(gameObject,5f);
     }
 
- //On Death, sends transform in the vector = to the tragectory of the bullet that killed the unit 
+ //On Death, sends object in the vector = to the tragectory of the bullet that killed the unit 
    public IEnumerator deathVelocity(Vector2 deathVector){
 
     rb.velocity = deathVector *2f; 
@@ -109,6 +109,7 @@ public class EnemyAI : MonoBehaviour
     yield return null;
    }
 
+    //Checks if Unit is dead and if shooting. If not shooting then move towards sandbag target 
     private void Update() {
         if(enemyHealth <=0){
           Death(); 

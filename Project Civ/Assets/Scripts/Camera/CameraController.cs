@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+   //Camera scroll speed
    public float speed = 5f;
 
    void Update() {

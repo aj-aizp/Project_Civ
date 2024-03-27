@@ -73,10 +73,17 @@ private void Update() {
         score -=100;
     }
 
-    if(Input.GetKeyUp("2") && score >=1000) {
-        Messenger.Broadcast(GameEvent.ARTY_BOUGHT);
-        score -=1000;
+     if(Input.GetKeyUp("2") && score >=200) {
+        Messenger.Broadcast(GameEvent.MACHINE_GUNNER_BOUGHT);
+        score -=200;
     }
+
+    if(Input.GetKeyUp("3") && score >=300) {
+        Messenger.Broadcast(GameEvent.ARTY_BOUGHT);
+        score -=300;
+    }
+
+
     
     scoreLabel.text = score.ToString(); 
     secondsLabel.text = seconds.ToString();
