@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*Responsible for background Music Player. Attached to AudioManager empty object in scene*/
+/*
+Responsible for background Music Player. Attached to AudioManager empty object in scene
+*/
 public class AudioManager : MonoBehaviour
 {
    [Header(".............Audio Source............")]

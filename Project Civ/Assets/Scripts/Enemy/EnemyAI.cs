@@ -7,7 +7,7 @@ using UnityEngine;
 /*Enemy AI script. Handles enemy health, movement, damage taken, death throwback, etc.*/
 public class EnemyAI : MonoBehaviour
 {
-     private Coroutine DamageFlashCoroutine; 
+    private Coroutine DamageFlashCoroutine; 
     private DamageFlash flash; 
     private SpriteRenderer sprite; 
     private Animator enemyAnim; 
@@ -61,7 +61,7 @@ public class EnemyAI : MonoBehaviour
         this.enemyHealth -=damage;
         flash.CallDamageFlash(); 
     }
-    
+
     //On respawn, acess all neccessary components. Potential for optimization as expensive to do this all at runtime 
     private void Awake() {
         setSpeed(0.003f);
@@ -113,8 +113,4 @@ public class EnemyAI : MonoBehaviour
      transform.position = Vector3.MoveTowards(transform.position,target.transform.position,speed+Time.deltaTime); 
      }
     }
-
-    
-
-
 }

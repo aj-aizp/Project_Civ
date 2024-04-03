@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+Handles bullet damage. Carries the travelDirection value for the death throwback function. 
+Travel Direction is set in weaponController.
+*/
 public class EnemyBullet : MonoBehaviour
 {
    public int bulletDamage = 10; 
@@ -9,12 +13,12 @@ public class EnemyBullet : MonoBehaviour
    private Vector3 Traveldirection;
    private SandBag sand; 
 
-
-
+  //called in weapon controller. Calculated by targetPos - aimPos vectors. 
    public void setTravelDirection(Vector3 TravelDirection){
     this.Traveldirection = TravelDirection;
    }
 
+  //when allied solider is hit or the sandbag, send damage information. Use switch statement to save on logic timing. 
    private void OnCollisionEnter2D(Collision2D col) {
 
     union = col.gameObject.GetComponent<UnionSol>();
@@ -43,11 +47,7 @@ public class EnemyBullet : MonoBehaviour
       col.gameObject.GetComponent<MachineGunner_AI>().setDamageVector(Traveldirection); 
       break;
     }
-
 }
     Destroy(gameObject);
-
    }
-
-
 }

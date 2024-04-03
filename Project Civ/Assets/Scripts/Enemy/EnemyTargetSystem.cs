@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+Simple targering system. When radius of hit detection circle collides with an object. Checks if that object 
+has a specific script attached.
+*/
 public class EnemyTargetSystem : MonoBehaviour
 {
     private WeaponController weapon;
     private EnemyAI enemyAI; 
-
     private Vector3 enemyPos; 
-
- 
     public float radius = 7f; 
 
 
@@ -19,6 +20,7 @@ public class EnemyTargetSystem : MonoBehaviour
 
     }
 
+    //Every frame, check if another collider has entered radius of circle collider. If so, start fire() coroutine. 
     void Update(){
 
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position,radius);
