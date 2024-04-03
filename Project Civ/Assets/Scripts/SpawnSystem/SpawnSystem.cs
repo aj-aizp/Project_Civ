@@ -37,6 +37,7 @@ private int x;
      UnityEngine.Vector3 spawnPos = transform.GetChild(i).gameObject.transform.position;
 
      GameObject newEnemy = Instantiate(enemyPrefab,spawnPos,quaternion.identity); 
+     newEnemy.GetComponent<EnemyAI>().setEnemyHealth(100 + x*10); 
      numEnemies--; 
      }
 

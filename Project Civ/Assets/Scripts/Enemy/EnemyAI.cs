@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 
+/*Enemy AI script. Handles enemy health, movement, damage taken, death throwback, etc.*/
 public class EnemyAI : MonoBehaviour
 {
      private Coroutine DamageFlashCoroutine; 
@@ -28,47 +29,40 @@ public class EnemyAI : MonoBehaviour
         this.speed = speed + speedOffset;
     }
 
+    //Getters and setters so other scripts can alter field variables of the AI 
     private float getSpeed(){
         return speed; 
     }
-
     public void setDamageVector(Vector3 DamageVector){
         this.DamageVector = DamageVector;
     }
-
     public void setIsFiring(bool isFiring){
         this.isFiring = isFiring; 
     }
-
     public bool getIsFiring(){
         return isFiring;
     }
-
     public int getEnemyID() {
         return enemyID;
     }
-
     public void setEnemyID(int enemyID){
      enemyID = this.enemyID;
     }
-
     public bool getDeadState(){
         return dead;
     }
-
     public int getEnemyHealth (){
         return enemyHealth;
     }
-
     public void setEnemyHealth (int enemyHealth){
         this.enemyHealth = enemyHealth;
     }
-
     public void damage (int damage) {
         this.enemyHealth -=damage;
         flash.CallDamageFlash(); 
     }
-
+    
+    //On respawn, acess all neccessary components. Potential for optimization as expensive to do this all at runtime 
     private void Awake() {
         setSpeed(0.003f);
         enemyHealth = 100;  

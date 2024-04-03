@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*Camera Movement Script. Movement irrespective of fps(Time.deltaTime). Z position left untouched since game is in 2D*/
 public class CameraController : MonoBehaviour
 {
    //Camera scroll speed

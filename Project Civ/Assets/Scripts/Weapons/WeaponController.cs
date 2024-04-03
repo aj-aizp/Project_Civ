@@ -9,8 +9,8 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
 
-[SerializeField] GameObject bulletPrefab;
-[SerializeField] AudioClip gunShot; 
+ [SerializeField] GameObject bulletPrefab;
+ [SerializeField] AudioClip gunShot; 
   private AudioSource soundSource;
   private Transform gunPoint;
   private SpriteRenderer sprite; 

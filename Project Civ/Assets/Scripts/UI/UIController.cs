@@ -59,12 +59,12 @@ private void Update() {
     seconds = (int)time % 60 ;
     minutes = (int)time / 60; 
 
-    if(seconds%30 ==0 && isSpawning == false ) {
+    if(seconds%20 ==0 && isSpawning == false ) {
         isSpawning = true; 
         Messenger.Broadcast(GameEvent.WAVE_SPAWN); 
     }
 
-    if (seconds%30 ==1) {
+    if (seconds%20 ==1) {
         isSpawning = false; 
     }
 
