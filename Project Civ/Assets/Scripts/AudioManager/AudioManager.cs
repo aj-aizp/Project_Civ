@@ -7,15 +7,16 @@ Responsible for background Music Player. Attached to AudioManager empty object i
 */
 public class AudioManager : MonoBehaviour
 {
-   [Header(".............Audio Source............")]
-   [SerializeField] AudioSource musicSource; 
+    [Header(".............Audio Source............")]
+    [SerializeField]
+    AudioSource musicSource;
 
-   public AudioClip backgroundMusic; 
+    public AudioClip backgroundMusic;
 
-//Start at the beggining of the scene 
-   private void Start() {
-    musicSource.clip = backgroundMusic; 
-    musicSource.Play(); 
-   }
-
+    //Start at the beggining of the scene
+    private void Start()
+    {
+        musicSource.clip = backgroundMusic;
+        musicSource.Play();
+    }
 }

@@ -1,53 +1,74 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
 /*
-Pause Menu script and Game Over screen. Similar logic to Main Menu Script. Add an event Messenger for game over event. 
+Pause Menu script and Game Over screen. Similar logic to Main Menu Script. Add an event Messenger for game over event.
 */
 public class PauseMenu : MonoBehaviour
 {
-   [SerializeField] GameObject pausePanel; 
-   [SerializeField] GameObject gameoverPanel; 
-   [SerializeField] GameObject howToPanel; 
+    [SerializeField]
+    GameObject pausePanel;
 
-// Game Over listener. Listens if Game Over Event has been triggered.
- void OnEnable() {
-    Messenger.AddListener(GameEvent.GAME_OVER, gameOver); 
-   }
+    [SerializeField]
+    GameObject gameoverPanel;
 
-void OnDisable() {
-    Messenger.RemoveListener(GameEvent.GAME_OVER, gameOver); 
-}
+    [SerializeField]
+    GameObject howToPanel;
 
-   //Game over screen 
-   public void gameOver() {
-    gameoverPanel.SetActive(true);
-    Time.timeScale = 0; 
-   }
+    // Game Over listener. Listens if Game Over Event has been triggered.
+    void OnEnable()
+    {
+        Messenger.AddListener(GameEvent.GAME_OVER, gameOver);
+    }
 
-  //Button logic 
-   public void Pause() {
-    pausePanel.SetActive(true); 
-    Time.timeScale = 0; 
-   }
-   public void HowTo() {
-   howToPanel.SetActive(true); 
-   }
-   public void Back() {
-    howToPanel.SetActive(false); 
-   }
-   public void Home() {
-    SceneManager.LoadScene(0); 
-    Time.timeScale = 1; 
-   }
-   public void Resume() {
-    pausePanel.SetActive(false); 
-    Time.timeScale = 1; 
-   }
-   public void Quit(){
-    Application.Quit(); 
+    void OnDisable()
+    {
+        Messenger.RemoveListener(GameEvent.GAME_OVER, gameOver);
+    }
 
-   }
+    //Game over screen
+    public void gameOver()
+    {
+        gameoverPanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    /*
+    Button Logic 
+    */
+    
+    public void Pause()
+    {
+        pausePanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void HowTo()
+    {
+        howToPanel.SetActive(true);
+    }
+
+    public void Back()
+    {
+        howToPanel.SetActive(false);
+    }
+
+    public void Home()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
+    }
+
+    public void Resume()
+    {
+        pausePanel.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
