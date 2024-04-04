@@ -4,18 +4,19 @@ using System.Data.Common;
 using System.Security.Principal;
 using UnityEngine;
 
+/*
+Explosion effect for artillery shell. Handles animation
+*/
 public class Explosion : MonoBehaviour
 {
-    private Animator animator; 
-    private void Awake() {
-        animator = GetComponent<Animator>() ;
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
         animator.Play("Explosion");
-        Destroy(gameObject,4f);
-        
+        Destroy(gameObject, 4f);
     }
 
-    private void Update() {
-    }
-
-  
+    private void Update() { }
 }
