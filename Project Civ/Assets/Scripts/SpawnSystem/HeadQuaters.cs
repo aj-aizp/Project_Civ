@@ -28,7 +28,7 @@ public class HeadQuaters : MonoBehaviour
     GameObject spawnPoints;
 
     [SerializeField]
-    public int startSoldiers = 3;
+    public int startSoldiers = 10;
 
     //Event Listeners
     void OnEnable()
@@ -48,7 +48,7 @@ public class HeadQuaters : MonoBehaviour
     //Buy Soldier unit function
     private void OnSoldierBought(int score)
     {
-        int numSoldiers = 2;
+        int numSoldiers = 7;
 
         while (numSoldiers > 0)
         {
@@ -75,11 +75,18 @@ public class HeadQuaters : MonoBehaviour
     //Buy Machine Gunner
     private void OnGunnerBought()
     {
-        int i = UnityEngine.Random.Range(0, transform.childCount);
+        int numGunners = 3;
 
-        UnityEngine.Vector3 spawnPos = transform.GetChild(i).gameObject.transform.position;
+        while (numGunners > 0)
+        {
+            int i = UnityEngine.Random.Range(0, transform.childCount);
 
-        GameObject newSoldier = Instantiate(machineGunnerPrefab, spawnPos, quaternion.identity);
+            UnityEngine.Vector3 spawnPos = transform.GetChild(i).gameObject.transform.position;
+
+            GameObject newSoldier = Instantiate(machineGunnerPrefab, spawnPos, quaternion.identity);
+
+            numGunners--;
+        }
     }
 
     // Start is called before the first frame update
@@ -87,11 +94,9 @@ public class HeadQuaters : MonoBehaviour
     {
         while (startSoldiers > 0)
         {
-            GameObject soldier = Instantiate(
-                soldierPrefab,
-                spawnPoint.position,
-                quaternion.identity
-            );
+            int i = UnityEngine.Random.Range(0, transform.childCount);
+            UnityEngine.Vector3 spawnPos = transform.GetChild(i).gameObject.transform.position;
+            GameObject soldier = Instantiate(soldierPrefab, spawnPos, quaternion.identity);
             startSoldiers--;
         }
     }

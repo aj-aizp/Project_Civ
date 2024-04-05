@@ -389,7 +389,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5.097473, y: 20.390076}
+  m_AnchoredPosition: {x: 5.097412, y: 20.390137}
   m_SizeDelta: {x: -1713.9302, y: -971.1236}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &321550722
@@ -543,7 +543,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000072676, y: -37}
+  m_AnchoredPosition: {x: -0.0000072676, y: -40.8}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &436618935
@@ -1674,8 +1674,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Controls: \nArrow Keys to Move Camera\n'1' key is used to buy Soldier\n'2'
-    key is used to buy Machine Gunner\n'3' key is used to buy Artillery piece \n"
+  m_text: "Controls: \nHold left mouse button and drag to select units \nPress right
+    mouse button with units selected to move them\nArrow Keys to Move Camera\n'1'
+    key is used to buy Soldier\n'2' key is used to buy Machine Gunner\n'3' key is
+    used to buy Artillery piece \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1999,7 +2001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
+  m_Color: {r: 0.78431374, g: 0, b: 0.02036076, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3070,7 +3072,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Objective: \nProtect Sandbags at all cost. When sandbag health turns to
-    0. You Lose. New enemy wave spawns every 30 seconds. Points earned from each
+    0, you lose. New enemy wave spawns every 20 seconds. Points earned from each
     enemy death. \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

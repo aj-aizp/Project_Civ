@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 8300000, guid: 6ea8df27c878e3c4ea701f4bfbce7c9f, type: 3}
   explosionPrefab: {fileID: 7418977624487702785, guid: d4a2543885520114a8f9a5bb4bbfb417, type: 3}
-  hitForce: 5
+  hitForce: 7
   bulletDamage: 7
   splashRange: 1.5
 --- !u!82 &1360882651693306057

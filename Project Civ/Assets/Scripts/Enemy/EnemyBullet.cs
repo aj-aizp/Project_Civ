@@ -13,6 +13,15 @@ public class EnemyBullet : MonoBehaviour
     private Vector3 Traveldirection;
     private SandBag sand;
 
+    private void Awake() {
+        
+        int i = Random.Range(1,9); 
+
+        if(i==1) {
+            gameObject.layer = 11; 
+        }
+    }
+
     //called in weapon controller. Calculated by targetPos - aimPos vectors.
     public void setTravelDirection(Vector3 TravelDirection)
     {

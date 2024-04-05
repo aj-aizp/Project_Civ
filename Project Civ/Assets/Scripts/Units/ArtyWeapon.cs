@@ -80,14 +80,14 @@ public class ArtyWeapon : MonoBehaviour
         aimVector = aimVector.normalized;
 
         //  get absolute value of rotation. If greater than 90, flip on x axis.
-        if (Math.Abs(rotationZ1) > 90f)
-        {
-            sprite.flipX = true;
-        }
-        else
-        {
-            sprite.flipX = false;
-        }
+        // if (Math.Abs(rotationZ1) > 90f)
+        // {
+        //     sprite.flipX = true;
+        // }
+        // else
+        // {
+        //     sprite.flipX = false;
+        // }
 
         UnityEngine.Quaternion rotation = UnityEngine.Quaternion.Euler(0.0f, 0.0f, rotationZ2);
 

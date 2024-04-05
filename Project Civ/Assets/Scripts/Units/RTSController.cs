@@ -12,7 +12,7 @@ public class RTSController : MonoBehaviour
     private Transform selectedArea;
 
     [SerializeField]
-    private int modNumber = 20;
+    private int modNumber = 10;
     private Vector3 startPos;
     private Vector3 worldPos;
 

@@ -82,22 +82,22 @@ public class UIController : MonoBehaviour
             isSpawning = false;
         }
 
-        if (Input.GetKeyUp("1") && score >= 100)
+        if (Input.GetKeyUp("1") && score >= 200)
         {
             Messenger<int>.Broadcast(GameEvent.SOLDIER_BOUGHT, score);
-            score -= 100;
-        }
-
-        if (Input.GetKeyUp("2") && score >= 200)
-        {
-            Messenger.Broadcast(GameEvent.MACHINE_GUNNER_BOUGHT);
             score -= 200;
         }
 
-        if (Input.GetKeyUp("3") && score >= 300)
+        if (Input.GetKeyUp("2") && score >= 500)
+        {
+            Messenger.Broadcast(GameEvent.MACHINE_GUNNER_BOUGHT);
+            score -= 500;
+        }
+
+        if (Input.GetKeyUp("3") && score >= 1000)
         {
             Messenger.Broadcast(GameEvent.ARTY_BOUGHT);
-            score -= 300;
+            score -= 1000;
         }
 
         scoreLabel.text = score.ToString();
