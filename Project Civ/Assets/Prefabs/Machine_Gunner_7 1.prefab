@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4059330652538302856}
   m_Layer: 8
-  m_Name: GunPoint
+  m_Name: LeftGunPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,6 +30,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6814779520032990713}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6245563882502371988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8460261420119793754}
+  m_Layer: 8
+  m_Name: RightGunPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8460261420119793754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6245563882502371988}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0.315, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6814779520032990713}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6814779520032990705
 GameObject:
@@ -72,6 +103,7 @@ Transform:
   m_Children:
   - {fileID: 6814779520107113519}
   - {fileID: 4059330652538302856}
+  - {fileID: 8460261420119793754}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -198,13 +230,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.876
+  m_Volume: 0.703
   m_Pitch: 0.71
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 146
+  Priority: 138
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -343,6 +375,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6511465823641451222, guid: a3075af36bdaf124fbe7e89298e10bbf, type: 3}
   gunShot: {fileID: 8300000, guid: 16c3f3f2495055c48a05062064c34730, type: 3}
+  leftGunPoint: {fileID: 4059330652538302856}
+  rightGunPoint: {fileID: 8460261420119793754}
   fireForce: 4
   firerate: 0.1
 --- !u!114 &6814779520032990716

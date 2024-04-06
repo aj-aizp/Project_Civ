@@ -13,14 +13,22 @@ public class MachineGunner_Weapon : MonoBehaviour
 
     [SerializeField]
     AudioClip gunShot;
+
+    [SerializeField]
+    private Transform leftGunPoint;
+
+    [SerializeField]
+    private Transform rightGunPoint;
+    private Transform gunPoint; 
     private AudioSource soundSource;
-    private Transform gunPoint;
     private SpriteRenderer sprite;
+    private GameObject bullet; 
 
     private Animator animator;
     public float fireForce = 20f;
     public float firerate;
     private float nextfire;
+    private bool flipper = false; 
 
     private float randomNum;
     private Vector3 aimVector;
@@ -35,7 +43,7 @@ public class MachineGunner_Weapon : MonoBehaviour
 
         soundSource = transform.GetComponent<AudioSource>();
 
-        gunPoint = gameObject.transform.Find("GunPoint").transform;
+        gunPoint = gameObject.transform.Find("LeftGunPoint").transform;
     }
 
     //Fire Coroutine
@@ -56,12 +64,16 @@ public class MachineGunner_Weapon : MonoBehaviour
         if (Math.Abs(rotationZ1) < 90f)
         {
             sprite.flipX = true;
-            // aimPoint = new Vector3 (-gunPoint.position.x,gunPoint.position.y,0);
+            aimVector = targetPos - rightGunPoint.transform.position; 
+            aimVector.x = aimVector.x + randomNum;
+            aimVector.y = aimVector.y + randomNum;
+            aimVector = aimVector.normalized; 
+            flipper = true; 
         }
         else
         {
             sprite.flipX = false;
-            //aimPoint = gunPoint.transform.position;
+            flipper = false; 
         }
 
         Quaternion rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ2);
@@ -73,7 +85,14 @@ public class MachineGunner_Weapon : MonoBehaviour
 
             animator.Play("MachineGunner_Shooting", 0, 1f);
             soundSource.PlayOneShot(gunShot);
-            GameObject bullet = Instantiate(bulletPrefab, gunPoint.transform.position, rotation);
+
+            if (flipper) {
+             bullet = Instantiate(bulletPrefab, rightGunPoint.transform.position, rotation); 
+            }
+
+            else {
+             bullet = Instantiate(bulletPrefab, leftGunPoint.transform.position, rotation); 
+            }
 
             if (bullet.TryGetComponent<Bullet>(out Bullet unionBullet))
             {
