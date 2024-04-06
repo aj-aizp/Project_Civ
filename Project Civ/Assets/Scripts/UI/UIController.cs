@@ -10,6 +10,8 @@ public class UIController : MonoBehaviour
 {
     [SerializeField]
     private TMP_Text scoreLabel;
+    [SerializeField]
+    private TMP_Text enemyKillLabel; 
 
     [SerializeField]
     private TMP_Text secondsLabel;
@@ -19,7 +21,11 @@ public class UIController : MonoBehaviour
 
     [SerializeField]
     private TMP_Text healthLabel;
+
+    [SerializeField]
+    private GameObject UIcanvas;
     private int score;
+    private int enemyKillCounter; 
     private float time;
     private int seconds;
     private int minutes;
@@ -42,7 +48,9 @@ public class UIController : MonoBehaviour
     private void OnEnemySolDeath()
     {
         score += 10;
+        enemyKillCounter +=1;
         scoreLabel.text = score.ToString();
+        enemyKillLabel.text = enemyKillCounter.ToString(); 
     }
 
     //update sandbag UI health
@@ -58,6 +66,7 @@ public class UIController : MonoBehaviour
         time = 0.0f;
         seconds = 0;
         minutes = 0;
+        enemyKillCounter = 0; 
         isSpawning = false;
         scoreLabel.text = score.ToString();
         secondsLabel.text = seconds.ToString();
@@ -98,6 +107,16 @@ public class UIController : MonoBehaviour
         {
             Messenger.Broadcast(GameEvent.ARTY_BOUGHT);
             score -= 1000;
+        }
+
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            UIcanvas.SetActive(false);
+        }
+
+        if (Input.GetKeyUp(KeyCode.O) && UIcanvas.activeSelf == false)
+        {
+            UIcanvas.SetActive(true);
         }
 
         scoreLabel.text = score.ToString();
